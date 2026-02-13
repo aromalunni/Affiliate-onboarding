@@ -35,7 +35,6 @@ body {
   line-height: 1.6;
 }
 
-/* Hero Header */
 .hero {
   background: linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #0F172A 100%);
   padding: 48px 24px 56px;
@@ -107,7 +106,6 @@ body {
   margin: 0 auto;
 }
 
-/* Progress Bar */
 .progress-container {
   max-width: 680px;
   margin: -28px auto 0;
@@ -183,7 +181,6 @@ body {
   width: 0%;
 }
 
-/* Form Container */
 .form-wrapper {
   max-width: 680px;
   margin: 24px auto 48px;
@@ -240,7 +237,6 @@ body {
   color: var(--text-muted);
 }
 
-/* Form Fields */
 .form-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -288,7 +284,6 @@ body {
 }
 
 .field input::placeholder { color: #CBD5E1; }
-
 .field textarea { resize: vertical; min-height: 80px; }
 
 .field input[type="file"] {
@@ -317,10 +312,7 @@ body {
   gap: 8px;
 }
 
-.radio-option {
-  position: relative;
-}
-
+.radio-option { position: relative; }
 .radio-option input { display: none; }
 
 .radio-option label {
@@ -344,16 +336,9 @@ body {
   font-weight: 600;
 }
 
-.inline-radio {
-  display: flex;
-  gap: 12px;
-}
+.inline-radio { display: flex; gap: 12px; }
+.inline-radio .radio-option label { padding: 8px 20px; }
 
-.inline-radio .radio-option label {
-  padding: 8px 20px;
-}
-
-/* Navigation */
 .nav-buttons {
   display: flex;
   justify-content: space-between;
@@ -402,7 +387,6 @@ body {
   transform: none;
 }
 
-/* Success Screen */
 .success-screen {
   display: none;
   text-align: center;
@@ -447,26 +431,6 @@ body {
   margin-bottom: 8px;
 }
 
-/* Config Banner */
-.config-banner {
-  background: #FEF3C7;
-  border: 1px solid #FCD34D;
-  border-radius: var(--radius);
-  padding: 16px 20px;
-  margin-bottom: 24px;
-  font-size: 13px;
-  color: #92400E;
-  line-height: 1.5;
-}
-
-.config-banner code {
-  background: #FDE68A;
-  padding: 2px 6px;
-  border-radius: 4px;
-  font-size: 12px;
-}
-
-/* Spinner */
 .spinner {
   width: 18px;
   height: 18px;
@@ -478,7 +442,6 @@ body {
 
 @keyframes spin { to { transform: rotate(360deg); } }
 
-/* Error message */
 .field-error {
   font-size: 12px;
   color: var(--error);
@@ -486,13 +449,9 @@ body {
 }
 
 .field.has-error input,
-.field.has-error select {
-  border-color: var(--error);
-}
-
+.field.has-error select { border-color: var(--error); }
 .field.has-error .field-error { display: block; }
 
-/* Responsive */
 @media (max-width: 640px) {
   .form-grid { grid-template-columns: 1fr; }
   .radio-group { grid-template-columns: 1fr 1fr; }
@@ -507,7 +466,6 @@ body {
 </head>
 <body>
 
-<!-- Hero -->
 <div class="hero">
   <div class="hero-content">
     <div class="logo-row">
@@ -519,55 +477,27 @@ body {
   </div>
 </div>
 
-<!-- Progress -->
 <div class="progress-container">
   <div class="progress-card">
     <div class="progress-steps">
-      <div class="progress-step active" data-step="1">
-        <span class="progress-step-num">1</span>
-        <span>Basic</span>
-      </div>
-      <div class="progress-step" data-step="2">
-        <span class="progress-step-num">2</span>
-        <span>Address</span>
-      </div>
-      <div class="progress-step" data-step="3">
-        <span class="progress-step-num">3</span>
-        <span>Business</span>
-      </div>
-      <div class="progress-step" data-step="4">
-        <span class="progress-step-num">4</span>
-        <span>Bank</span>
-      </div>
-      <div class="progress-step" data-step="5">
-        <span class="progress-step-num">5</span>
-        <span>KYC</span>
-      </div>
+      <div class="progress-step active" data-step="1"><span class="progress-step-num">1</span><span>Basic</span></div>
+      <div class="progress-step" data-step="2"><span class="progress-step-num">2</span><span>Address</span></div>
+      <div class="progress-step" data-step="3"><span class="progress-step-num">3</span><span>Business</span></div>
+      <div class="progress-step" data-step="4"><span class="progress-step-num">4</span><span>Bank</span></div>
+      <div class="progress-step" data-step="5"><span class="progress-step-num">5</span><span>KYC</span></div>
     </div>
-    <div class="progress-bar">
-      <div class="progress-fill"></div>
-    </div>
+    <div class="progress-bar"><div class="progress-fill"></div></div>
   </div>
 </div>
 
-<!-- Form -->
 <div class="form-wrapper">
-
-  <!-- Config Banner -->
-  <div class="config-banner" id="configBanner">
-    ⚠️ <strong>Setup Required:</strong> To connect this form to Google Sheets, deploy the Apps Script (included below) and paste your Web App URL in the <code>GOOGLE_SCRIPT_URL</code> variable inside the script tag at the bottom of this page.
-  </div>
-
   <form id="affiliateForm" novalidate>
 
     <!-- Section 1: Basic Details -->
     <div class="form-section active" data-section="1">
       <div class="section-header">
         <div class="section-icon">👤</div>
-        <div>
-          <h2>Basic Details</h2>
-          <p>Your personal information</p>
-        </div>
+        <div><h2>Basic Details</h2><p>Your personal information</p></div>
       </div>
       <div class="form-grid">
         <div class="field">
@@ -593,18 +523,9 @@ body {
         <div class="field full-width">
           <label>Gender <span class="req">*</span></label>
           <div class="inline-radio">
-            <div class="radio-option">
-              <input type="radio" name="gender" id="male" value="Male" required>
-              <label for="male">Male</label>
-            </div>
-            <div class="radio-option">
-              <input type="radio" name="gender" id="female" value="Female">
-              <label for="female">Female</label>
-            </div>
-            <div class="radio-option">
-              <input type="radio" name="gender" id="other" value="Other">
-              <label for="other">Other</label>
-            </div>
+            <div class="radio-option"><input type="radio" name="gender" id="male" value="Male" required><label for="male">Male</label></div>
+            <div class="radio-option"><input type="radio" name="gender" id="female" value="Female"><label for="female">Female</label></div>
+            <div class="radio-option"><input type="radio" name="gender" id="other" value="Other"><label for="other">Other</label></div>
           </div>
         </div>
         <div class="field full-width">
@@ -621,10 +542,7 @@ body {
     <div class="form-section" data-section="2">
       <div class="section-header">
         <div class="section-icon">📍</div>
-        <div>
-          <h2>Address Details</h2>
-          <p>Your residential address</p>
-        </div>
+        <div><h2>Address Details</h2><p>Your residential address</p></div>
       </div>
       <div class="form-grid">
         <div class="field full-width">
@@ -645,20 +563,11 @@ body {
           <label>District <span class="req">*</span></label>
           <select name="district" required>
             <option value="">Select District</option>
-            <option>Alappuzha</option>
-            <option>Ernakulam</option>
-            <option>Idukki</option>
-            <option>Kannur</option>
-            <option>Kasaragod</option>
-            <option>Kollam</option>
-            <option>Kottayam</option>
-            <option>Kozhikode</option>
-            <option>Malappuram</option>
-            <option>Palakkad</option>
-            <option>Pathanamthitta</option>
-            <option>Thiruvananthapuram</option>
-            <option>Thrissur</option>
-            <option>Wayanad</option>
+            <option>Alappuzha</option><option>Ernakulam</option><option>Idukki</option>
+            <option>Kannur</option><option>Kasaragod</option><option>Kollam</option>
+            <option>Kottayam</option><option>Kozhikode</option><option>Malappuram</option>
+            <option>Palakkad</option><option>Pathanamthitta</option><option>Thiruvananthapuram</option>
+            <option>Thrissur</option><option>Wayanad</option>
           </select>
           <span class="field-error">Please select your district</span>
         </div>
@@ -686,31 +595,16 @@ body {
     <div class="form-section" data-section="3">
       <div class="section-header">
         <div class="section-icon">💼</div>
-        <div>
-          <h2>Business / Work Details</h2>
-          <p>Your professional background</p>
-        </div>
+        <div><h2>Business / Work Details</h2><p>Your professional background</p></div>
       </div>
       <div class="form-grid">
         <div class="field full-width">
           <label>Affiliate Type <span class="req">*</span></label>
           <div class="radio-group">
-            <div class="radio-option">
-              <input type="radio" name="affiliate_type" id="individual" value="Individual" required>
-              <label for="individual">👤 Individual</label>
-            </div>
-            <div class="radio-option">
-              <input type="radio" name="affiliate_type" id="freelancer" value="Freelancer">
-              <label for="freelancer">💻 Freelancer</label>
-            </div>
-            <div class="radio-option">
-              <input type="radio" name="affiliate_type" id="contractor" value="Contractor">
-              <label for="contractor">🔧 Contractor</label>
-            </div>
-            <div class="radio-option">
-              <input type="radio" name="affiliate_type" id="dealer" value="Dealer / Agency">
-              <label for="dealer">🏢 Dealer / Agency</label>
-            </div>
+            <div class="radio-option"><input type="radio" name="affiliate_type" id="individual" value="Individual" required><label for="individual">👤 Individual</label></div>
+            <div class="radio-option"><input type="radio" name="affiliate_type" id="freelancer" value="Freelancer"><label for="freelancer">💻 Freelancer</label></div>
+            <div class="radio-option"><input type="radio" name="affiliate_type" id="contractor" value="Contractor"><label for="contractor">🔧 Contractor</label></div>
+            <div class="radio-option"><input type="radio" name="affiliate_type" id="dealer" value="Dealer / Agency"><label for="dealer">🏢 Dealer / Agency</label></div>
           </div>
         </div>
         <div class="field">
@@ -721,10 +615,8 @@ body {
           <label>Experience in Solar / Electrical <span class="req">*</span></label>
           <select name="experience" required>
             <option value="">Select Experience</option>
-            <option value="0">No Experience</option>
-            <option value="1-2">1–2 Years</option>
-            <option value="3-5">3–5 Years</option>
-            <option value="5-10">5–10 Years</option>
+            <option value="0">No Experience</option><option value="1-2">1–2 Years</option>
+            <option value="3-5">3–5 Years</option><option value="5-10">5–10 Years</option>
             <option value="10+">10+ Years</option>
           </select>
           <span class="field-error">Please select your experience</span>
@@ -737,24 +629,16 @@ body {
         <div class="field">
           <label>Existing Customer Base? <span class="req">*</span></label>
           <div class="inline-radio">
-            <div class="radio-option">
-              <input type="radio" name="existing_customers" id="cust_yes" value="Yes" required>
-              <label for="cust_yes">Yes</label>
-            </div>
-            <div class="radio-option">
-              <input type="radio" name="existing_customers" id="cust_no" value="No">
-              <label for="cust_no">No</label>
-            </div>
+            <div class="radio-option"><input type="radio" name="existing_customers" id="cust_yes" value="Yes" required><label for="cust_yes">Yes</label></div>
+            <div class="radio-option"><input type="radio" name="existing_customers" id="cust_no" value="No"><label for="cust_no">No</label></div>
           </div>
         </div>
         <div class="field">
           <label>Expected Leads per Month <span class="req">*</span></label>
           <select name="expected_leads" required>
             <option value="">Select Range</option>
-            <option value="1-5">1–5</option>
-            <option value="5-10">5–10</option>
-            <option value="10-20">10–20</option>
-            <option value="20-50">20–50</option>
+            <option value="1-5">1–5</option><option value="5-10">5–10</option>
+            <option value="10-20">10–20</option><option value="20-50">20–50</option>
             <option value="50+">50+</option>
           </select>
           <span class="field-error">Please select expected leads</span>
@@ -770,10 +654,7 @@ body {
     <div class="form-section" data-section="4">
       <div class="section-header">
         <div class="section-icon">🏦</div>
-        <div>
-          <h2>Bank Details</h2>
-          <p>For commission payments</p>
-        </div>
+        <div><h2>Bank Details</h2><p>For commission payments</p></div>
       </div>
       <div class="form-grid">
         <div class="field">
@@ -816,10 +697,7 @@ body {
     <div class="form-section" data-section="5">
       <div class="section-header">
         <div class="section-icon">🔐</div>
-        <div>
-          <h2>KYC Verification</h2>
-          <p>Identity documents for verification</p>
-        </div>
+        <div><h2>KYC Verification</h2><p>Identity documents for verification</p></div>
       </div>
       <div class="form-grid">
         <div class="field">
@@ -858,7 +736,6 @@ body {
 
   </form>
 
-  <!-- Success -->
   <div class="success-screen" id="successScreen">
     <div class="success-icon">✓</div>
     <h2>Application Submitted!</h2>
@@ -870,11 +747,9 @@ body {
 
 <script>
 // ============================================================
-// ⚠️ CONFIGURATION — PASTE YOUR GOOGLE APPS SCRIPT WEB APP URL
+// PASTE YOUR GOOGLE APPS SCRIPT WEB APP URL HERE
 // ============================================================
-const GOOGLE_SCRIPT_URL = '';
-// Deploy the Apps Script below and paste the URL here.
-// Example: 'https://script.google.com/macros/s/AKfycb.../exec'
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz62z40JzV5-5p0rdqhxUEyj8B-9CnvY0qxo6AwofrxlF1UxpsJHIyIaJNblu7KKomMBA/exec';
 // ============================================================
 
 let currentSection = 1;
@@ -883,7 +758,6 @@ const totalSections = 5;
 function updateProgress() {
   const pct = ((currentSection - 1) / (totalSections - 1)) * 100;
   document.querySelector('.progress-fill').style.width = pct + '%';
-  
   document.querySelectorAll('.progress-step').forEach(el => {
     const s = parseInt(el.dataset.step);
     el.classList.remove('active', 'done');
@@ -893,9 +767,7 @@ function updateProgress() {
 }
 
 function showSection(n) {
-  document.querySelectorAll('.form-section').forEach(el => {
-    el.classList.remove('active');
-  });
+  document.querySelectorAll('.form-section').forEach(el => el.classList.remove('active'));
   document.querySelector(`[data-section="${n}"]`).classList.add('active');
   currentSection = n;
   updateProgress();
@@ -906,12 +778,10 @@ function validateCurrentSection() {
   const section = document.querySelector(`[data-section="${currentSection}"]`);
   const fields = section.querySelectorAll('[required]');
   let valid = true;
-
   fields.forEach(field => {
     const parent = field.closest('.field');
     if (field.type === 'radio') {
-      const name = field.name;
-      const checked = section.querySelector(`input[name="${name}"]:checked`);
+      const checked = section.querySelector(`input[name="${field.name}"]:checked`);
       if (!checked) valid = false;
       return;
     }
@@ -921,7 +791,6 @@ function validateCurrentSection() {
       if (parent) parent.classList.add('has-error');
     }
   });
-
   return valid;
 }
 
@@ -934,7 +803,6 @@ function prevSection() {
   if (currentSection > 1) showSection(currentSection - 1);
 }
 
-// Convert file to base64
 function fileToBase64(file) {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
@@ -944,16 +812,13 @@ function fileToBase64(file) {
   });
 }
 
-// Form submission
 document.getElementById('affiliateForm').addEventListener('submit', async function(e) {
   e.preventDefault();
-  
   if (!validateCurrentSection()) return;
 
   const submitBtn = document.getElementById('submitBtn');
   const submitText = document.getElementById('submitText');
   const submitSpinner = document.getElementById('submitSpinner');
-  
   submitBtn.disabled = true;
   submitText.textContent = 'Submitting...';
   submitSpinner.style.display = 'block';
@@ -961,13 +826,11 @@ document.getElementById('affiliateForm').addEventListener('submit', async functi
   const formData = new FormData(this);
   const data = {};
 
-  // Collect text fields
   for (const [key, value] of formData.entries()) {
     if (value instanceof File && value.size > 0) continue;
     data[key] = value;
   }
 
-  // Collect files as base64
   const fileFields = ['profile_photo', 'cancelled_cheque', 'aadhaar_upload', 'pan_upload', 'additional_id'];
   for (const fieldName of fileFields) {
     const input = this.querySelector(`[name="${fieldName}"]`);
@@ -975,48 +838,29 @@ document.getElementById('affiliateForm').addEventListener('submit', async functi
       const files = [];
       for (const file of input.files) {
         if (file.size > 0) {
-          try {
-            files.push(await fileToBase64(file));
-          } catch (err) {
-            console.error(`Error processing ${fieldName}:`, err);
-          }
+          try { files.push(await fileToBase64(file)); } catch (err) { console.error(err); }
         }
       }
       data[fieldName + '_files'] = files;
     }
   }
 
-  // Generate reference ID
   const refId = 'FLZ-' + Date.now().toString(36).toUpperCase();
   data['reference_id'] = refId;
   data['submitted_at'] = new Date().toISOString();
 
-  if (!GOOGLE_SCRIPT_URL) {
-    console.log('Form data (no Google Script URL configured):', data);
-    alert('⚠️ Google Sheets not connected. Check console for form data.\n\nTo connect: Deploy the Apps Script and add the URL to GOOGLE_SCRIPT_URL.');
-    submitBtn.disabled = false;
-    submitText.textContent = 'Submit Application ✓';
-    submitSpinner.style.display = 'none';
-    return;
-  }
-
   try {
-    const response = await fetch(GOOGLE_SCRIPT_URL, {
+    await fetch(GOOGLE_SCRIPT_URL, {
       method: 'POST',
       mode: 'no-cors',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data)
     });
-
     document.getElementById('affiliateForm').style.display = 'none';
-    document.getElementById('configBanner').style.display = 'none';
     document.getElementById('refId').textContent = refId;
     document.getElementById('successScreen').classList.add('show');
-    
-    // Update progress to complete
     document.querySelector('.progress-fill').style.width = '100%';
     document.querySelectorAll('.progress-step').forEach(el => el.classList.add('done'));
-
   } catch (error) {
     console.error('Submission error:', error);
     alert('Something went wrong. Please try again.');
@@ -1026,13 +870,7 @@ document.getElementById('affiliateForm').addEventListener('submit', async functi
   }
 });
 
-// Hide config banner if URL is set
-if (GOOGLE_SCRIPT_URL) {
-  document.getElementById('configBanner').style.display = 'none';
-}
-
 updateProgress();
 </script>
-
 </body>
 </html>
