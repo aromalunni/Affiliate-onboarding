@@ -291,6 +291,9 @@ body {
   cursor: pointer;
   background: var(--primary-light);
   border-style: dashed;
+  width: 100%;
+  min-width: 0;
+  overflow: hidden;
 }
 
 .field input[type="file"]::file-selector-button {
@@ -452,15 +455,49 @@ body {
 .field.has-error select { border-color: var(--error); }
 .field.has-error .field-error { display: block; }
 
-@media (max-width: 640px) {
+/* Tablet */
+@media (max-width: 768px) {
+  .form-wrapper { padding: 0 16px; }
+  .progress-container { padding: 0 16px; }
+  .form-section { padding: 24px 20px; }
+  .hero { padding: 36px 20px 48px; }
+  .hero h1 { font-size: 26px; }
+  .hero p { font-size: 14px; }
+  .progress-step span { font-size: 11px; }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .hero { padding: 32px 16px 44px; }
+  .hero h1 { font-size: 22px; }
+  .hero p { font-size: 13px; }
+  .logo-text { font-size: 24px; }
+  .logo-icon { width: 36px; height: 36px; font-size: 18px; }
+  .progress-container { padding: 0 12px; }
+  .progress-card { padding: 16px; }
+  .progress-steps { gap: 2px; }
+  .progress-step span { display: none; }
+  .progress-step-num { width: 28px; height: 28px; font-size: 12px; }
+  .form-wrapper { padding: 0 12px; margin: 16px auto 36px; }
   .form-grid { grid-template-columns: 1fr; }
   .radio-group { grid-template-columns: 1fr 1fr; }
-  .form-section { padding: 24px 20px; }
-  .hero h1 { font-size: 26px; }
-  .progress-steps { gap: 4px; }
-  .progress-step span { display: none; }
-  .nav-buttons { flex-direction: column-reverse; }
-  .btn { justify-content: center; width: 100%; }
+  .form-section { padding: 20px 16px; border-radius: 12px; }
+  .section-header { gap: 10px; margin-bottom: 20px; padding-bottom: 12px; }
+  .section-icon { width: 36px; height: 36px; font-size: 18px; }
+  .section-header h2 { font-size: 17px; }
+  .section-header p { font-size: 12px; }
+  .field label { font-size: 12px; }
+  .field input,
+  .field select,
+  .field textarea { padding: 10px 12px; font-size: 14px; }
+  .inline-radio { flex-wrap: wrap; gap: 8px; }
+  .inline-radio .radio-option label { padding: 8px 16px; font-size: 13px; }
+  .radio-option label { padding: 10px 10px; font-size: 12px; }
+  .nav-buttons { flex-direction: column-reverse; gap: 10px; margin-top: 20px; padding-top: 16px; }
+  .btn { justify-content: center; width: 100%; padding: 14px 20px; }
+  .success-screen { padding: 40px 16px; }
+  .success-screen h2 { font-size: 22px; }
+  .success-icon { width: 64px; height: 64px; font-size: 32px; }
 }
 </style>
 </head>
