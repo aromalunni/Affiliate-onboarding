@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flarize Technologies – Affiliate Onboarding</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary: #F97316;
+  --primary-dark: #EA580C;
+  --primary-light: #FFF7ED;
+  --accent: #0F172A;
+  --surface: #FFFFFF;
+  --bg: #F8FAFC;
+  --text: #1E293B;
+  --text-muted: #64748B;
+  --border: #E2E8F0;
+  --border-focus: #F97316;
+  --success: #10B981;
+  --error: #EF4444;
+  --radius: 12px;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+  --shadow-lg: 0 12px 40px rgba(0,0,0,0.12);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+/* Hero Header */
+.hero {
+  background: linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #0F172A 100%);
+  padding: 48px 24px 56px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 30% 50%, rgba(249,115,22,0.15) 0%, transparent 50%),
+              radial-gradient(circle at 70% 80%, rgba(249,115,22,0.1) 0%, transparent 40%);
+  animation: pulse 8s ease-in-out infinite alternate;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1) rotate(0deg); }
+  100% { transform: scale(1.05) rotate(2deg); }
+}
+
+.hero-content { position: relative; z-index: 1; max-width: 600px; margin: 0 auto; }
+
+.logo-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.logo-icon {
+  width: 44px;
+  height: 44px;
+  background: var(--primary);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  box-shadow: 0 4px 20px rgba(249,115,22,0.4);
+}
+
+.logo-text {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 800;
+  font-size: 28px;
+  color: #fff;
+  letter-spacing: -0.5px;
+}
+
+.hero h1 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 10px;
+  letter-spacing: -0.5px;
+}
+
+.hero p {
+  color: #94A3B8;
+  font-size: 15px;
+  max-width: 440px;
+  margin: 0 auto;
+}
+
+/* Progress Bar */
+.progress-container {
+  max-width: 680px;
+  margin: -28px auto 0;
+  padding: 0 24px;
+  position: relative;
+  z-index: 2;
+}
+
+.progress-card {
+  background: var(--surface);
+  border-radius: 16px;
+  padding: 20px 24px;
+  box-shadow: var(--shadow-lg);
+}
+
+.progress-steps {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.progress-step {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+  transition: color 0.3s;
+}
+
+.progress-step.active { color: var(--primary); }
+.progress-step.done { color: var(--success); }
+
+.progress-step-num {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  background: var(--border);
+  color: var(--text-muted);
+  transition: all 0.3s;
+}
+
+.progress-step.active .progress-step-num {
+  background: var(--primary);
+  color: #fff;
+  box-shadow: 0 2px 10px rgba(249,115,22,0.3);
+}
+
+.progress-step.done .progress-step-num {
+  background: var(--success);
+  color: #fff;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 4px;
+  background: var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary), #FB923C);
+  border-radius: 4px;
+  transition: width 0.5s ease;
+  width: 0%;
+}
+
+/* Form Container */
+.form-wrapper {
+  max-width: 680px;
+  margin: 24px auto 48px;
+  padding: 0 24px;
+}
+
+.form-section {
+  background: var(--surface);
+  border-radius: 16px;
+  padding: 32px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border);
+  display: none;
+  animation: fadeUp 0.4s ease;
+}
+
+.form-section.active { display: block; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid var(--primary-light);
+}
+
+.section-icon {
+  width: 40px;
+  height: 40px;
+  background: var(--primary-light);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
+
+.section-header h2 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.section-header p {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* Form Fields */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.form-grid .full-width { grid-column: 1 / -1; }
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.field label .req { color: var(--error); font-size: 14px; }
+
+.field input,
+.field select,
+.field textarea {
+  padding: 12px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  color: var(--text);
+  background: #fff;
+  transition: all 0.2s;
+  outline: none;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 3px rgba(249,115,22,0.1);
+}
+
+.field input::placeholder { color: #CBD5E1; }
+
+.field textarea { resize: vertical; min-height: 80px; }
+
+.field input[type="file"] {
+  padding: 10px;
+  cursor: pointer;
+  background: var(--primary-light);
+  border-style: dashed;
+}
+
+.field input[type="file"]::file-selector-button {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.radio-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.radio-option {
+  position: relative;
+}
+
+.radio-option input { display: none; }
+
+.radio-option label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+}
+
+.radio-option input:checked + label {
+  border-color: var(--primary);
+  background: var(--primary-light);
+  color: var(--primary-dark);
+  font-weight: 600;
+}
+
+.inline-radio {
+  display: flex;
+  gap: 12px;
+}
+
+.inline-radio .radio-option label {
+  padding: 8px 20px;
+}
+
+/* Navigation */
+.nav-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+
+.btn {
+  padding: 12px 28px;
+  border-radius: var(--radius);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-secondary {
+  background: var(--bg);
+  color: var(--text-muted);
+  border: 1.5px solid var(--border);
+}
+
+.btn-secondary:hover { background: var(--border); }
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(249,115,22,0.3);
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 24px rgba(249,115,22,0.4);
+}
+
+.btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Success Screen */
+.success-screen {
+  display: none;
+  text-align: center;
+  padding: 60px 24px;
+  max-width: 500px;
+  margin: 0 auto;
+  animation: fadeUp 0.5s ease;
+}
+
+.success-screen.show { display: block; }
+
+.success-icon {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, #10B981, #059669);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 24px;
+  font-size: 40px;
+  box-shadow: 0 8px 32px rgba(16,185,129,0.3);
+  animation: scaleIn 0.5s ease 0.2s both;
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0); }
+  to { transform: scale(1); }
+}
+
+.success-screen h2 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+
+.success-screen p {
+  color: var(--text-muted);
+  font-size: 15px;
+  margin-bottom: 8px;
+}
+
+/* Config Banner */
+.config-banner {
+  background: #FEF3C7;
+  border: 1px solid #FCD34D;
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  margin-bottom: 24px;
+  font-size: 13px;
+  color: #92400E;
+  line-height: 1.5;
+}
+
+.config-banner code {
+  background: #FDE68A;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+/* Spinner */
+.spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Error message */
+.field-error {
+  font-size: 12px;
+  color: var(--error);
+  display: none;
+}
+
+.field.has-error input,
+.field.has-error select {
+  border-color: var(--error);
+}
+
+.field.has-error .field-error { display: block; }
+
+/* Responsive */
+@media (max-width: 640px) {
+  .form-grid { grid-template-columns: 1fr; }
+  .radio-group { grid-template-columns: 1fr 1fr; }
+  .form-section { padding: 24px 20px; }
+  .hero h1 { font-size: 26px; }
+  .progress-steps { gap: 4px; }
+  .progress-step span { display: none; }
+  .nav-buttons { flex-direction: column-reverse; }
+  .btn { justify-content: center; width: 100%; }
+}
+</style>
+</head>
+<body>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-content">
+    <div class="logo-row">
+      <div class="logo-icon">☀️</div>
+      <div class="logo-text">Flarize</div>
+    </div>
+    <h1>Affiliate Partner Onboarding</h1>
+    <p>Join Kerala's fastest-growing solar network. Refer customers, earn commissions, grow with us.</p>
+  </div>
+</div>
+
+<!-- Progress -->
+<div class="progress-container">
+  <div class="progress-card">
+    <div class="progress-steps">
+      <div class="progress-step active" data-step="1">
+        <span class="progress-step-num">1</span>
+        <span>Basic</span>
+      </div>
+      <div class="progress-step" data-step="2">
+        <span class="progress-step-num">2</span>
+        <span>Address</span>
+      </div>
+      <div class="progress-step" data-step="3">
+        <span class="progress-step-num">3</span>
+        <span>Business</span>
+      </div>
+      <div class="progress-step" data-step="4">
+        <span class="progress-step-num">4</span>
+        <span>Bank</span>
+      </div>
+      <div class="progress-step" data-step="5">
+        <span class="progress-step-num">5</span>
+        <span>KYC</span>
+      </div>
+    </div>
+    <div class="progress-bar">
+      <div class="progress-fill"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Form -->
+<div class="form-wrapper">
+
+  <!-- Config Banner -->
+  <div class="config-banner" id="configBanner">
+    ⚠️ <strong>Setup Required:</strong> To connect this form to Google Sheets, deploy the Apps Script (included below) and paste your Web App URL in the <code>GOOGLE_SCRIPT_URL</code> variable inside the script tag at the bottom of this page.
+  </div>
+
+  <form id="affiliateForm" novalidate>
+
+    <!-- Section 1: Basic Details -->
+    <div class="form-section active" data-section="1">
+      <div class="section-header">
+        <div class="section-icon">👤</div>
+        <div>
+          <h2>Basic Details</h2>
+          <p>Your personal information</p>
+        </div>
+      </div>
+      <div class="form-grid">
+        <div class="field">
+          <label>Full Name (as per ID) <span class="req">*</span></label>
+          <input type="text" name="full_name" placeholder="Enter your full name" required>
+          <span class="field-error">Please enter your full name</span>
+        </div>
+        <div class="field">
+          <label>Mobile Number <span class="req">*</span></label>
+          <input type="tel" name="mobile" placeholder="10-digit mobile number" maxlength="10" pattern="[0-9]{10}" required>
+          <span class="field-error">Enter a valid 10-digit mobile number</span>
+        </div>
+        <div class="field">
+          <label>Email ID <span class="req">*</span></label>
+          <input type="email" name="email" placeholder="your@email.com" required>
+          <span class="field-error">Enter a valid email address</span>
+        </div>
+        <div class="field">
+          <label>Date of Birth <span class="req">*</span></label>
+          <input type="date" name="dob" required>
+          <span class="field-error">Please select your date of birth</span>
+        </div>
+        <div class="field full-width">
+          <label>Gender <span class="req">*</span></label>
+          <div class="inline-radio">
+            <div class="radio-option">
+              <input type="radio" name="gender" id="male" value="Male" required>
+              <label for="male">Male</label>
+            </div>
+            <div class="radio-option">
+              <input type="radio" name="gender" id="female" value="Female">
+              <label for="female">Female</label>
+            </div>
+            <div class="radio-option">
+              <input type="radio" name="gender" id="other" value="Other">
+              <label for="other">Other</label>
+            </div>
+          </div>
+        </div>
+        <div class="field full-width">
+          <label>Profile Photo</label>
+          <input type="file" name="profile_photo" accept="image/*">
+        </div>
+      </div>
+      <div class="nav-buttons" style="justify-content:flex-end;">
+        <button type="button" class="btn btn-primary" onclick="nextSection()">Continue →</button>
+      </div>
+    </div>
+
+    <!-- Section 2: Address Details -->
+    <div class="form-section" data-section="2">
+      <div class="section-header">
+        <div class="section-icon">📍</div>
+        <div>
+          <h2>Address Details</h2>
+          <p>Your residential address</p>
+        </div>
+      </div>
+      <div class="form-grid">
+        <div class="field full-width">
+          <label>Address Line 1 <span class="req">*</span></label>
+          <input type="text" name="address_1" placeholder="House/Building name, Street" required>
+          <span class="field-error">Please enter your address</span>
+        </div>
+        <div class="field full-width">
+          <label>Address Line 2</label>
+          <input type="text" name="address_2" placeholder="Locality, Landmark">
+        </div>
+        <div class="field">
+          <label>City / Town <span class="req">*</span></label>
+          <input type="text" name="city" placeholder="City or Town" required>
+          <span class="field-error">Please enter your city</span>
+        </div>
+        <div class="field">
+          <label>District <span class="req">*</span></label>
+          <select name="district" required>
+            <option value="">Select District</option>
+            <option>Alappuzha</option>
+            <option>Ernakulam</option>
+            <option>Idukki</option>
+            <option>Kannur</option>
+            <option>Kasaragod</option>
+            <option>Kollam</option>
+            <option>Kottayam</option>
+            <option>Kozhikode</option>
+            <option>Malappuram</option>
+            <option>Palakkad</option>
+            <option>Pathanamthitta</option>
+            <option>Thiruvananthapuram</option>
+            <option>Thrissur</option>
+            <option>Wayanad</option>
+          </select>
+          <span class="field-error">Please select your district</span>
+        </div>
+        <div class="field">
+          <label>State</label>
+          <input type="text" name="state" value="Kerala" readonly style="background:#F1F5F9;">
+        </div>
+        <div class="field">
+          <label>Pincode <span class="req">*</span></label>
+          <input type="text" name="pincode" placeholder="6-digit pincode" maxlength="6" pattern="[0-9]{6}" required>
+          <span class="field-error">Enter a valid 6-digit pincode</span>
+        </div>
+        <div class="field full-width">
+          <label>Current Location (Google Maps link)</label>
+          <input type="url" name="location_link" placeholder="https://maps.google.com/...">
+        </div>
+      </div>
+      <div class="nav-buttons">
+        <button type="button" class="btn btn-secondary" onclick="prevSection()">← Back</button>
+        <button type="button" class="btn btn-primary" onclick="nextSection()">Continue →</button>
+      </div>
+    </div>
+
+    <!-- Section 3: Business / Work Details -->
+    <div class="form-section" data-section="3">
+      <div class="section-header">
+        <div class="section-icon">💼</div>
+        <div>
+          <h2>Business / Work Details</h2>
+          <p>Your professional background</p>
+        </div>
+      </div>
+      <div class="form-grid">
+        <div class="field full-width">
+          <label>Affiliate Type <span class="req">*</span></label>
+          <div class="radio-group">
+            <div class="radio-option">
+              <input type="radio" name="affiliate_type" id="individual" value="Individual" required>
+              <label for="individual">👤 Individual</label>
+            </div>
+            <div class="radio-option">
+              <input type="radio" name="affiliate_type" id="freelancer" value="Freelancer">
+              <label for="freelancer">💻 Freelancer</label>
+            </div>
+            <div class="radio-option">
+              <input type="radio" name="affiliate_type" id="contractor" value="Contractor">
+              <label for="contractor">🔧 Contractor</label>
+            </div>
+            <div class="radio-option">
+              <input type="radio" name="affiliate_type" id="dealer" value="Dealer / Agency">
+              <label for="dealer">🏢 Dealer / Agency</label>
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <label>Company Name (if applicable)</label>
+          <input type="text" name="company_name" placeholder="Company or firm name">
+        </div>
+        <div class="field">
+          <label>Experience in Solar / Electrical <span class="req">*</span></label>
+          <select name="experience" required>
+            <option value="">Select Experience</option>
+            <option value="0">No Experience</option>
+            <option value="1-2">1–2 Years</option>
+            <option value="3-5">3–5 Years</option>
+            <option value="5-10">5–10 Years</option>
+            <option value="10+">10+ Years</option>
+          </select>
+          <span class="field-error">Please select your experience</span>
+        </div>
+        <div class="field full-width">
+          <label>Working Area / Service Locations <span class="req">*</span></label>
+          <textarea name="service_locations" placeholder="List the areas, panchayats, or districts you can cover" required></textarea>
+          <span class="field-error">Please enter your service locations</span>
+        </div>
+        <div class="field">
+          <label>Existing Customer Base? <span class="req">*</span></label>
+          <div class="inline-radio">
+            <div class="radio-option">
+              <input type="radio" name="existing_customers" id="cust_yes" value="Yes" required>
+              <label for="cust_yes">Yes</label>
+            </div>
+            <div class="radio-option">
+              <input type="radio" name="existing_customers" id="cust_no" value="No">
+              <label for="cust_no">No</label>
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <label>Expected Leads per Month <span class="req">*</span></label>
+          <select name="expected_leads" required>
+            <option value="">Select Range</option>
+            <option value="1-5">1–5</option>
+            <option value="5-10">5–10</option>
+            <option value="10-20">10–20</option>
+            <option value="20-50">20–50</option>
+            <option value="50+">50+</option>
+          </select>
+          <span class="field-error">Please select expected leads</span>
+        </div>
+      </div>
+      <div class="nav-buttons">
+        <button type="button" class="btn btn-secondary" onclick="prevSection()">← Back</button>
+        <button type="button" class="btn btn-primary" onclick="nextSection()">Continue →</button>
+      </div>
+    </div>
+
+    <!-- Section 4: Bank Details -->
+    <div class="form-section" data-section="4">
+      <div class="section-header">
+        <div class="section-icon">🏦</div>
+        <div>
+          <h2>Bank Details</h2>
+          <p>For commission payments</p>
+        </div>
+      </div>
+      <div class="form-grid">
+        <div class="field">
+          <label>Account Holder Name <span class="req">*</span></label>
+          <input type="text" name="account_holder" placeholder="Name as per bank records" required>
+          <span class="field-error">Please enter account holder name</span>
+        </div>
+        <div class="field">
+          <label>Bank Name <span class="req">*</span></label>
+          <input type="text" name="bank_name" placeholder="e.g. State Bank of India" required>
+          <span class="field-error">Please enter bank name</span>
+        </div>
+        <div class="field">
+          <label>Account Number <span class="req">*</span></label>
+          <input type="text" name="account_number" placeholder="Account number" required>
+          <span class="field-error">Please enter account number</span>
+        </div>
+        <div class="field">
+          <label>IFSC Code <span class="req">*</span></label>
+          <input type="text" name="ifsc" placeholder="e.g. SBIN0001234" maxlength="11" style="text-transform:uppercase;" required>
+          <span class="field-error">Please enter IFSC code</span>
+        </div>
+        <div class="field">
+          <label>Branch</label>
+          <input type="text" name="branch" placeholder="Branch name">
+        </div>
+        <div class="field">
+          <label>Cancelled Cheque <span class="req">*</span></label>
+          <input type="file" name="cancelled_cheque" accept="image/*,.pdf" required>
+          <span class="field-error">Please upload cancelled cheque</span>
+        </div>
+      </div>
+      <div class="nav-buttons">
+        <button type="button" class="btn btn-secondary" onclick="prevSection()">← Back</button>
+        <button type="button" class="btn btn-primary" onclick="nextSection()">Continue →</button>
+      </div>
+    </div>
+
+    <!-- Section 5: KYC Verification -->
+    <div class="form-section" data-section="5">
+      <div class="section-header">
+        <div class="section-icon">🔐</div>
+        <div>
+          <h2>KYC Verification</h2>
+          <p>Identity documents for verification</p>
+        </div>
+      </div>
+      <div class="form-grid">
+        <div class="field">
+          <label>Aadhaar Number <span class="req">*</span></label>
+          <input type="text" name="aadhaar_number" placeholder="12-digit Aadhaar" maxlength="12" pattern="[0-9]{12}" required>
+          <span class="field-error">Enter a valid 12-digit Aadhaar number</span>
+        </div>
+        <div class="field">
+          <label>PAN Number <span class="req">*</span></label>
+          <input type="text" name="pan_number" placeholder="e.g. ABCDE1234F" maxlength="10" style="text-transform:uppercase;" pattern="[A-Z]{5}[0-9]{4}[A-Z]{1}" required>
+          <span class="field-error">Enter a valid PAN number</span>
+        </div>
+        <div class="field">
+          <label>Upload Aadhaar (Front & Back) <span class="req">*</span></label>
+          <input type="file" name="aadhaar_upload" accept="image/*,.pdf" multiple required>
+          <span class="field-error">Please upload Aadhaar card</span>
+        </div>
+        <div class="field">
+          <label>Upload PAN Card <span class="req">*</span></label>
+          <input type="file" name="pan_upload" accept="image/*,.pdf" required>
+          <span class="field-error">Please upload PAN card</span>
+        </div>
+        <div class="field full-width">
+          <label>Additional ID (Driving License / Voter ID)</label>
+          <input type="file" name="additional_id" accept="image/*,.pdf">
+        </div>
+      </div>
+      <div class="nav-buttons">
+        <button type="button" class="btn btn-secondary" onclick="prevSection()">← Back</button>
+        <button type="submit" class="btn btn-primary" id="submitBtn">
+          <span id="submitText">Submit Application ✓</span>
+          <span id="submitSpinner" class="spinner" style="display:none;"></span>
+        </button>
+      </div>
+    </div>
+
+  </form>
+
+  <!-- Success -->
+  <div class="success-screen" id="successScreen">
+    <div class="success-icon">✓</div>
+    <h2>Application Submitted!</h2>
+    <p>Thank you for registering as a Flarize affiliate partner.</p>
+    <p style="color:var(--text); font-weight:600; margin-top:16px;">Our team will review your application and get back to you within 24-48 hours.</p>
+    <p style="margin-top:24px; font-size:13px;">Reference ID: <strong id="refId"></strong></p>
+  </div>
+</div>
+
+<script>
+// ============================================================
+// ⚠️ CONFIGURATION — PASTE YOUR GOOGLE APPS SCRIPT WEB APP URL
+// ============================================================
+const GOOGLE_SCRIPT_URL = '';
+// Deploy the Apps Script below and paste the URL here.
+// Example: 'https://script.google.com/macros/s/AKfycb.../exec'
+// ============================================================
+
+let currentSection = 1;
+const totalSections = 5;
+
+function updateProgress() {
+  const pct = ((currentSection - 1) / (totalSections - 1)) * 100;
+  document.querySelector('.progress-fill').style.width = pct + '%';
+  
+  document.querySelectorAll('.progress-step').forEach(el => {
+    const s = parseInt(el.dataset.step);
+    el.classList.remove('active', 'done');
+    if (s < currentSection) el.classList.add('done');
+    else if (s === currentSection) el.classList.add('active');
+  });
+}
+
+function showSection(n) {
+  document.querySelectorAll('.form-section').forEach(el => {
+    el.classList.remove('active');
+  });
+  document.querySelector(`[data-section="${n}"]`).classList.add('active');
+  currentSection = n;
+  updateProgress();
+  window.scrollTo({ top: 200, behavior: 'smooth' });
+}
+
+function validateCurrentSection() {
+  const section = document.querySelector(`[data-section="${currentSection}"]`);
+  const fields = section.querySelectorAll('[required]');
+  let valid = true;
+
+  fields.forEach(field => {
+    const parent = field.closest('.field');
+    if (field.type === 'radio') {
+      const name = field.name;
+      const checked = section.querySelector(`input[name="${name}"]:checked`);
+      if (!checked) valid = false;
+      return;
+    }
+    if (parent) parent.classList.remove('has-error');
+    if (!field.value || !field.checkValidity()) {
+      valid = false;
+      if (parent) parent.classList.add('has-error');
+    }
+  });
+
+  return valid;
+}
+
+function nextSection() {
+  if (!validateCurrentSection()) return;
+  if (currentSection < totalSections) showSection(currentSection + 1);
+}
+
+function prevSection() {
+  if (currentSection > 1) showSection(currentSection - 1);
+}
+
+// Convert file to base64
+function fileToBase64(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve({ name: file.name, type: file.type, data: reader.result.split(',')[1] });
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
+
+// Form submission
+document.getElementById('affiliateForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  
+  if (!validateCurrentSection()) return;
+
+  const submitBtn = document.getElementById('submitBtn');
+  const submitText = document.getElementById('submitText');
+  const submitSpinner = document.getElementById('submitSpinner');
+  
+  submitBtn.disabled = true;
+  submitText.textContent = 'Submitting...';
+  submitSpinner.style.display = 'block';
+
+  const formData = new FormData(this);
+  const data = {};
+
+  // Collect text fields
+  for (const [key, value] of formData.entries()) {
+    if (value instanceof File && value.size > 0) continue;
+    data[key] = value;
+  }
+
+  // Collect files as base64
+  const fileFields = ['profile_photo', 'cancelled_cheque', 'aadhaar_upload', 'pan_upload', 'additional_id'];
+  for (const fieldName of fileFields) {
+    const input = this.querySelector(`[name="${fieldName}"]`);
+    if (input && input.files.length > 0) {
+      const files = [];
+      for (const file of input.files) {
+        if (file.size > 0) {
+          try {
+            files.push(await fileToBase64(file));
+          } catch (err) {
+            console.error(`Error processing ${fieldName}:`, err);
+          }
+        }
+      }
+      data[fieldName + '_files'] = files;
+    }
+  }
+
+  // Generate reference ID
+  const refId = 'FLZ-' + Date.now().toString(36).toUpperCase();
+  data['reference_id'] = refId;
+  data['submitted_at'] = new Date().toISOString();
+
+  if (!GOOGLE_SCRIPT_URL) {
+    console.log('Form data (no Google Script URL configured):', data);
+    alert('⚠️ Google Sheets not connected. Check console for form data.\n\nTo connect: Deploy the Apps Script and add the URL to GOOGLE_SCRIPT_URL.');
+    submitBtn.disabled = false;
+    submitText.textContent = 'Submit Application ✓';
+    submitSpinner.style.display = 'none';
+    return;
+  }
+
+  try {
+    const response = await fetch(GOOGLE_SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+
+    document.getElementById('affiliateForm').style.display = 'none';
+    document.getElementById('configBanner').style.display = 'none';
+    document.getElementById('refId').textContent = refId;
+    document.getElementById('successScreen').classList.add('show');
+    
+    // Update progress to complete
+    document.querySelector('.progress-fill').style.width = '100%';
+    document.querySelectorAll('.progress-step').forEach(el => el.classList.add('done'));
+
+  } catch (error) {
+    console.error('Submission error:', error);
+    alert('Something went wrong. Please try again.');
+    submitBtn.disabled = false;
+    submitText.textContent = 'Submit Application ✓';
+    submitSpinner.style.display = 'none';
+  }
+});
+
+// Hide config banner if URL is set
+if (GOOGLE_SCRIPT_URL) {
+  document.getElementById('configBanner').style.display = 'none';
+}
+
+updateProgress();
+</script>
+
+</body>
+</html>
