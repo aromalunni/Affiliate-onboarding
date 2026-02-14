@@ -274,6 +274,32 @@ textarea{resize:vertical;min-height:72px}
   </div>
 </div>
 
+<!-- STATUS CHECKER (accessible via link below form) -->
+<div id="statusChecker" class="layout" style="display:none;padding-top:24px;padding-bottom:48px">
+  <div class="card active" style="display:block">
+    <div class="card-title">Check Application Status</div>
+    <div class="card-sub">Enter your reference ID to view your application status</div>
+    <div class="grid">
+      <div class="fld">
+        <label>Reference ID <span class="req">*</span></label>
+        <input type="text" id="statusRefId" placeholder="e.g. FLZ-M5X8K2P" style="text-transform:uppercase;font-family:'Manrope',monospace;letter-spacing:1px">
+      </div>
+      <button type="button" class="btn btn-primary" onclick="checkStatus()" id="statusBtn" style="flex:none;width:100%">
+        <span id="statusBtnTxt">Check Status</span>
+        <span class="spinner" id="statusSpin"></span>
+      </button>
+    </div>
+    <div id="statusResult" style="display:none;margin-top:20px;padding:16px;border-radius:var(--r);animation:cardIn .3s ease">
+    </div>
+    <div style="text-align:center;margin-top:16px">
+      <a href="#" onclick="hideStatus();return false" style="font-size:13px;color:var(--brand);text-decoration:none;font-weight:600">← Back to Application Form</a>
+    </div>
+  </div>
+</div>
+
+<!-- Status link at bottom of form -->
+<div class="layout" id="statusLink" style="text-align:center;padding:16px;padding-bottom:48px">
+  <a href="#" onclick="showStatus();return false" style="font-size:13px;color:var(--text-3);text-decoration:none;font-weight:500;transition:color .2s">Already applied? <span style="color:var(--brand);font-weight:600;text-decoration:underline">Check Application Status</span></a>
 </div>
 
 <script>
@@ -345,16 +371,25 @@ document.addEventListener('click',function(e){
 document.getElementById('F').addEventListener('submit',async function(e){
   e.preventDefault();if(!val())return;
   const btn=document.getElementById('subBtn'),txt=document.getElementById('subTxt'),spin=document.getElementById('subSpin');
-  btn.disabled=true;txt.textContent='Submitting...';spin.style.display='block';
+  btn.disabled=true;txt.textContent='Processing files...';spin.style.display='block';
   const fd=new FormData(this),data={};
   for(const[k,v]of fd.entries()){if(!(v instanceof File&&v.size>0))data[k]=v}
-  for(const nm of['profile_photo','cancelled_cheque','aadhaar_upload','pan_upload','additional_id']){
+  /* Parallel file conversion — all files at once */
+  const fileFields=['profile_photo','cancelled_cheque','aadhaar_upload','pan_upload','additional_id'];
+  const filePromises=[];
+  for(const nm of fileFields){
     const inp=this.querySelector(`[name="${nm}"]`);
-    if(inp?.files.length){const a=[];for(const f of inp.files){if(f.size>0)try{a.push(await toB64(f))}catch(e){}}data[nm+'_files']=a}
+    if(inp?.files.length){
+      for(const f of inp.files){if(f.size>0)filePromises.push(toB64(f).then(r=>({field:nm,file:r})))}
+    }
   }
-  data.reference_id='FLZ-'+Date.now().toString(36).toUpperCase();
-  data.submitted_at=new Date().toISOString();
   try{
+    txt.textContent='Uploading...';
+    const results=await Promise.all(filePromises);
+    for(const r of results){const k=r.field+'_files';if(!data[k])data[k]=[];data[k].push(r.file)}
+    data.reference_id='FLZ-'+Date.now().toString(36).toUpperCase();
+    data.submitted_at=new Date().toISOString();
+    txt.textContent='Submitting...';
     await fetch(GOOGLE_SCRIPT_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
     this.style.display='none';
     document.getElementById('refId').textContent=data.reference_id;
@@ -366,6 +401,53 @@ document.getElementById('F').addEventListener('submit',async function(e){
 });
 
 prog();
+
+/* Status checker */
+function showStatus(){
+  document.querySelector('.layout').style.display='none';
+  document.getElementById('statusLink').style.display='none';
+  document.getElementById('statusChecker').style.display='block';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function hideStatus(){
+  document.querySelector('.layout').style.display='';
+  document.getElementById('statusLink').style.display='';
+  document.getElementById('statusChecker').style.display='none';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+async function checkStatus(){
+  const refId=document.getElementById('statusRefId').value.trim().toUpperCase();
+  if(!refId){alert('Please enter your reference ID');return}
+  const btn=document.getElementById('statusBtn'),txt=document.getElementById('statusBtnTxt'),spin=document.getElementById('statusSpin'),res=document.getElementById('statusResult');
+  btn.disabled=true;txt.textContent='Checking...';spin.style.display='block';res.style.display='none';
+  try{
+    const r=await fetch(GOOGLE_SCRIPT_URL+'?action=status&ref='+encodeURIComponent(refId));
+    const d=await r.json();
+    if(d.found){
+      const st=d.status||'Under Review';
+      const stColor=st.toLowerCase().includes('approved')?'var(--green)':st.toLowerCase().includes('reject')?'var(--red)':'var(--accent-dark)';
+      res.innerHTML=`
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
+          <div style="width:10px;height:10px;border-radius:50%;background:${stColor};flex-shrink:0"></div>
+          <div style="font-size:15px;font-weight:700;color:var(--text)">${st}</div>
+        </div>
+        <div style="display:grid;gap:8px;font-size:13px;color:var(--text-2)">
+          <div><strong>Name:</strong> ${d.name||'—'}</div>
+          <div><strong>Reference:</strong> <span style="font-family:monospace;letter-spacing:0.5px">${refId}</span></div>
+          <div><strong>Submitted:</strong> ${d.date||'—'}</div>
+          ${d.remarks?`<div style="margin-top:4px;padding:10px;background:var(--bg);border-radius:6px;border-left:3px solid ${stColor}"><strong>Remarks:</strong> ${d.remarks}</div>`:''}
+        </div>`;
+      res.style.display='block';res.style.background='var(--bg)';res.style.border='1px solid var(--border)';
+    }else{
+      res.innerHTML='<div style="text-align:center;color:var(--text-3);font-size:13px;padding:8px">No application found with this reference ID. Please check and try again.</div>';
+      res.style.display='block';res.style.background='#FEF2F2';res.style.border='1px solid #FECACA';
+    }
+  }catch(err){
+    res.innerHTML='<div style="text-align:center;color:var(--text-3);font-size:13px;padding:8px">Unable to check status right now. Please try again later.</div>';
+    res.style.display='block';res.style.background='#FEF2F2';res.style.border='1px solid #FECACA';
+  }
+  btn.disabled=false;txt.textContent='Check Status';spin.style.display='none';
+}
 
 /* Shake animation (added via JS) */
 const shakeStyle=document.createElement('style');
