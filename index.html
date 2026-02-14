@@ -243,6 +243,7 @@ textarea{resize:vertical;min-height:72px}
 <!-- 5 -->
 <div class="card" data-c="5"><div class="card-title">Identity Verification</div><div class="card-sub">Upload KYC documents for compliance</div><div class="grid"><div class="row row-2"><div class="fld"><label>Aadhaar Number <span class="req">*</span></label><input type="text" name="aadhaar_number" placeholder="12-digit number" maxlength="12" pattern="[0-9]{12}" required><div class="err">Enter valid Aadhaar</div></div><div class="fld"><label>PAN Number</label><input type="text" name="pan_number" placeholder="e.g. ABCDE1234F (optional)" maxlength="10" style="text-transform:uppercase" pattern="[A-Z]{5}[0-9]{4}[A-Z]{1}"><div class="err">Enter valid PAN</div></div></div><div class="row row-2"><div class="fld"><label>Aadhaar Card (Front & Back) <span class="req">*</span></label><div class="file-box"><div class="file-box-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg></div><div class="file-box-text"><strong>Upload</strong><span class="file-box-name">Both sides</span></div><input type="file" name="aadhaar_upload" accept="image/*,.pdf" multiple required onchange="ufn(this)"></div><div class="err">Required</div></div><div class="fld"><label>PAN Card (Optional)</label><div class="file-box"><div class="file-box-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg></div><div class="file-box-text"><strong>Upload</strong><span class="file-box-name">Front side</span></div><input type="file" name="pan_upload" accept="image/*,.pdf" onchange="ufn(this)"></div></div></div><div class="fld"><label>Additional ID (Optional)</label><div class="file-box"><div class="file-box-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg></div><div class="file-box-text"><strong>Upload</strong><span class="file-box-name">Driving License or Voter ID</span></div><input type="file" name="additional_id" accept="image/*,.pdf" onchange="ufn(this)"></div></div></div><div class="actions"><button type="button" class="btn btn-ghost" onclick="prv()">← Back</button><button type="submit" class="btn btn-primary" id="subBtn"><span id="subTxt">Submit Application ✓</span><span class="spinner" id="subSpin"></span></button></div></div>
 
+</form>
 <!-- SUCCESS -->
 <!-- V10.1 --><div class="success" id="successBox">
   <div class="success-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></div>
@@ -374,8 +375,8 @@ document.getElementById('F').addEventListener('submit',async function(e){
     txt.textContent='Uploading ('+sizeMB+'MB)...';
     /* Fire and forget — no-cors gives opaque response anyway */
     fetch(GOOGLE_SCRIPT_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:payload}).catch(function(){});
-    /* Show success immediately */
-    document.getElementById('F').style.display='none';
+    /* Hide form cards, show success */
+    document.querySelectorAll('.card').forEach(function(c){c.style.display='none'});
     document.getElementById('slipName').textContent=data.full_name||'';
     document.getElementById('slipRef').textContent=data.reference_id;
     document.getElementById('slipDate').textContent=new Date().toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'});
@@ -390,7 +391,7 @@ document.getElementById('F').addEventListener('submit',async function(e){
     console.error('Submit error:',err);
     /* Even if error — still show success since data was already sent */
     try{
-      document.getElementById('F').style.display='none';
+      document.querySelectorAll('.card').forEach(function(c){c.style.display='none'});
       document.getElementById('successBox').classList.add('show');
       document.getElementById('successBox').scrollIntoView({behavior:'smooth',block:'start'});
       document.querySelectorAll('.st').forEach(s=>s.classList.add('done'));
