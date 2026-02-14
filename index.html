@@ -318,7 +318,7 @@ textarea{resize:vertical;min-height:72px}
 </div>
 
 <script>
-const GOOGLE_SCRIPT_URL='https://script.google.com/macros/s/AKfycbz3ZzNHLWQGGLCIuf35oV3X9J1C9tSk8Vr4GEuW-OQ8pII38dRm8r1BAzHjzAQ4pbbm_A/exec';
+const GOOGLE_SCRIPT_URL='https://script.google.com/macros/s/AKfycbyodXULxZ5PC4316pSU5380_U79_Ibh75Pyya35zZ_bh-Xs-2GUiU0pXlqP_5fKqqsI4Q/exec';
 let cur=1;const tot=5;
 
 function ufn(i){const t=i.closest('.file-box').querySelector('.file-box-name');const box=i.closest('.file-box');if(i.files.length){let tooBig=false;for(const f of i.files){if(f.size>5*1024*1024)tooBig=true}if(tooBig){t.textContent='File too large! Max 5MB';box.style.borderColor='var(--red)';box.style.background='#FEF2F2';i.value='';return}t.textContent=i.files.length===1?i.files[0].name:i.files.length+' files';box.style.borderColor='var(--green)';box.style.background='#F0FFF4'}}
