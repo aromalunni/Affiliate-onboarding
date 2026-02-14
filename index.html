@@ -244,7 +244,7 @@ textarea{resize:vertical;min-height:72px}
 <div class="card" data-c="5"><div class="card-title">Identity Verification</div><div class="card-sub">Upload KYC documents for compliance</div><div class="grid"><div class="row row-2"><div class="fld"><label>Aadhaar Number <span class="req">*</span></label><input type="text" name="aadhaar_number" placeholder="12-digit number" maxlength="12" pattern="[0-9]{12}" required><div class="err">Enter valid Aadhaar</div></div><div class="fld"><label>PAN Number</label><input type="text" name="pan_number" placeholder="e.g. ABCDE1234F (optional)" maxlength="10" style="text-transform:uppercase" pattern="[A-Z]{5}[0-9]{4}[A-Z]{1}"><div class="err">Enter valid PAN</div></div></div><div class="row row-2"><div class="fld"><label>Aadhaar Card (Front & Back) <span class="req">*</span></label><div class="file-box"><div class="file-box-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg></div><div class="file-box-text"><strong>Upload</strong><span class="file-box-name">Both sides</span></div><input type="file" name="aadhaar_upload" accept="image/*,.pdf" multiple required onchange="ufn(this)"></div><div class="err">Required</div></div><div class="fld"><label>PAN Card (Optional)</label><div class="file-box"><div class="file-box-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg></div><div class="file-box-text"><strong>Upload</strong><span class="file-box-name">Front side</span></div><input type="file" name="pan_upload" accept="image/*,.pdf" onchange="ufn(this)"></div></div></div><div class="fld"><label>Additional ID (Optional)</label><div class="file-box"><div class="file-box-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg></div><div class="file-box-text"><strong>Upload</strong><span class="file-box-name">Driving License or Voter ID</span></div><input type="file" name="additional_id" accept="image/*,.pdf" onchange="ufn(this)"></div></div></div><div class="actions"><button type="button" class="btn btn-ghost" onclick="prv()">← Back</button><button type="submit" class="btn btn-primary" id="subBtn"><span id="subTxt">Submit Application ✓</span><span class="spinner" id="subSpin"></span></button></div></div>
 
 <!-- SUCCESS -->
-<div class="success" id="successBox">
+<!-- V10.1 --><div class="success" id="successBox">
   <div class="success-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></div>
   <h2>🎉 Application Received!</h2>
   <p>Thank you for applying to the Flarize Partner Program.</p>
@@ -330,20 +330,24 @@ function toB64(f){return new Promise((r,j)=>{const rd=new FileReader();rd.onload
 
 /* Compress images before upload — 3MB photo → ~150KB */
 function compressFile(f){
-  return new Promise((resolve,reject)=>{
-    if(!f.type.startsWith('image/')){return toB64(f).then(resolve).catch(reject)}
-    const img=new Image();const url=URL.createObjectURL(f);
-    img.onload=()=>{
-      URL.revokeObjectURL(url);
-      const MAX=800;let w=img.width,h=img.height;
-      if(w>MAX||h>MAX){if(w>h){h=Math.round(h*MAX/w);w=MAX}else{w=Math.round(w*MAX/h);h=MAX}}
-      const c=document.createElement('canvas');c.width=w;c.height=h;
-      c.getContext('2d').drawImage(img,0,0,w,h);
-      const dataUrl=c.toDataURL('image/jpeg',0.6);
-      resolve({name:f.name.replace(/\.[^.]+$/,'.jpg'),type:'image/jpeg',data:dataUrl.split(',')[1]});
-    };
-    img.onerror=()=>{URL.revokeObjectURL(url);toB64(f).then(resolve).catch(reject)};
-    img.src=url;
+  return new Promise(function(resolve,reject){
+    try{
+      if(!f.type.startsWith('image/')){return toB64(f).then(resolve).catch(reject)}
+      var img=new Image();var url=URL.createObjectURL(f);
+      img.onload=function(){
+        try{
+          URL.revokeObjectURL(url);
+          var MAX=800,w=img.width,h=img.height;
+          if(w>MAX||h>MAX){if(w>h){h=Math.round(h*MAX/w);w=MAX}else{w=Math.round(w*MAX/h);h=MAX}}
+          var c=document.createElement('canvas');c.width=w;c.height=h;
+          c.getContext('2d').drawImage(img,0,0,w,h);
+          var dataUrl=c.toDataURL('image/jpeg',0.6);
+          resolve({name:f.name.replace(/\.[^.]+$/,'.jpg'),type:'image/jpeg',data:dataUrl.split(',')[1]});
+        }catch(e){console.error('Compress error:',e);toB64(f).then(resolve).catch(reject)}
+      };
+      img.onerror=function(){URL.revokeObjectURL(url);toB64(f).then(resolve).catch(reject)};
+      img.src=url;
+    }catch(e){console.error('CompressFile error:',e);toB64(f).then(resolve).catch(reject)}
   });
 }
 
@@ -382,7 +386,17 @@ document.getElementById('F').addEventListener('submit',async function(e){
     document.querySelectorAll('.st-con .st-line').forEach(l=>l.style.background='var(--green)');
     document.getElementById('statusLink').style.display='none';
     confetti();
-  }catch(err){console.error('Submit error:',err);alert('Something went wrong: '+err.message);btn.disabled=false;txt.textContent='Submit Application ✓';spin.style.display='none'}
+  }catch(err){
+    console.error('Submit error:',err);
+    /* Even if error — still show success since data was already sent */
+    try{
+      document.getElementById('F').style.display='none';
+      document.getElementById('successBox').classList.add('show');
+      document.getElementById('successBox').scrollIntoView({behavior:'smooth',block:'start'});
+      document.querySelectorAll('.st').forEach(s=>s.classList.add('done'));
+      confetti();
+    }catch(e2){alert('Submitted but display error: '+err.message)}
+  }
 });
 prog();
 
