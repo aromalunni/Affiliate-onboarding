@@ -218,7 +218,7 @@ textarea{resize:vertical;min-height:72px}
 </div>
 </div>
 
-<div class="layout">
+<div class="layout" id="mainLayout">
 <div class="stepper">
   <div class="st active" data-s="1"><div class="st-wrap"><span class="st-dot">1</span><span class="st-label">Details</span></div></div>
   <div class="st-con"><div class="st-line"></div></div>
@@ -240,7 +240,7 @@ textarea{resize:vertical;min-height:72px}
 <!-- 4 -->
 <div class="card" data-c="4"><div class="card-title">Bank Account Details</div><div class="card-sub">For commission payouts via NEFT/IMPS</div><div class="grid"><div class="row row-2"><div class="fld"><label>Account Holder Name <span class="req">*</span></label><input type="text" name="account_holder" placeholder="As per bank records" required><div class="err">Required</div></div><div class="fld"><label>Bank Name <span class="req">*</span></label><input type="text" name="bank_name" placeholder="e.g. State Bank of India" required><div class="err">Required</div></div></div><div class="row row-2"><div class="fld"><label>Account Number <span class="req">*</span></label><input type="text" name="account_number" placeholder="Enter account number" required><div class="err">Required</div></div><div class="fld"><label>IFSC Code <span class="req">*</span></label><input type="text" name="ifsc" placeholder="e.g. SBIN0001234" maxlength="11" style="text-transform:uppercase" required><div class="err">Required</div></div></div><div class="fld"><label>Branch Name</label><input type="text" name="branch" placeholder="Branch name (optional)"></div><div class="fld"><label>Cancelled Cheque / Passbook <span class="req">*</span></label><div class="file-box"><div class="file-box-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg></div><div class="file-box-text"><strong>Click to upload</strong><span class="file-box-name">PDF, JPG or PNG</span></div><input type="file" name="cancelled_cheque" accept="image/*,.pdf" required onchange="ufn(this)"></div><div class="err">Required</div></div></div><div class="actions"><button type="button" class="btn btn-ghost" onclick="prv()">← Back</button><button type="button" class="btn btn-primary" onclick="nxt()">Continue →</button></div></div>
 <!-- 5 -->
-<div class="card" data-c="5"><div class="card-title">Identity Verification</div><div class="card-sub">Upload KYC documents for compliance</div><div class="grid"><div class="row row-2"><div class="fld"><label>Aadhaar Number <span class="req">*</span></label><input type="text" name="aadhaar_number" placeholder="12-digit number" maxlength="12" pattern="[0-9]{12}" required><div class="err">Enter valid Aadhaar</div></div><div class="fld"><label>PAN Number <span class="req">*</span></label><input type="text" name="pan_number" placeholder="e.g. ABCDE1234F" maxlength="10" style="text-transform:uppercase" pattern="[A-Z]{5}[0-9]{4}[A-Z]{1}" required><div class="err">Enter valid PAN</div></div></div><div class="row row-2"><div class="fld"><label>Aadhaar Card (Front & Back) <span class="req">*</span></label><div class="file-box"><div class="file-box-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg></div><div class="file-box-text"><strong>Upload</strong><span class="file-box-name">Both sides</span></div><input type="file" name="aadhaar_upload" accept="image/*,.pdf" multiple required onchange="ufn(this)"></div><div class="err">Required</div></div><div class="fld"><label>PAN Card <span class="req">*</span></label><div class="file-box"><div class="file-box-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg></div><div class="file-box-text"><strong>Upload</strong><span class="file-box-name">Front side</span></div><input type="file" name="pan_upload" accept="image/*,.pdf" required onchange="ufn(this)"></div><div class="err">Required</div></div></div><div class="fld"><label>Additional ID (Optional)</label><div class="file-box"><div class="file-box-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg></div><div class="file-box-text"><strong>Upload</strong><span class="file-box-name">Driving License or Voter ID</span></div><input type="file" name="additional_id" accept="image/*,.pdf" onchange="ufn(this)"></div></div></div><div class="actions"><button type="button" class="btn btn-ghost" onclick="prv()">← Back</button><button type="submit" class="btn btn-primary" id="subBtn"><span id="subTxt">Submit Application ✓</span><span class="spinner" id="subSpin"></span></button></div></div>
+<div class="card" data-c="5"><div class="card-title">Identity Verification</div><div class="card-sub">Upload KYC documents for compliance</div><div class="grid"><div class="row row-2"><div class="fld"><label>Aadhaar Number <span class="req">*</span></label><input type="text" name="aadhaar_number" placeholder="12-digit number" maxlength="12" pattern="[0-9]{12}" required><div class="err">Enter valid Aadhaar</div></div><div class="fld"><label>PAN Number</label><input type="text" name="pan_number" placeholder="e.g. ABCDE1234F" maxlength="10" style="text-transform:uppercase" pattern="[A-Z]{5}[0-9]{4}[A-Z]{1}"><div class="err">Enter valid PAN</div></div></div><div class="row row-2"><div class="fld"><label>Aadhaar Card (Front & Back) <span class="req">*</span></label><div class="file-box"><div class="file-box-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg></div><div class="file-box-text"><strong>Upload</strong><span class="file-box-name">Both sides</span></div><input type="file" name="aadhaar_upload" accept="image/*,.pdf" multiple required onchange="ufn(this)"></div><div class="err">Required</div></div><div class="fld"><label>PAN Card</label><div class="file-box"><div class="file-box-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg></div><div class="file-box-text"><strong>Upload</strong><span class="file-box-name">Front side (optional)</span></div><input type="file" name="pan_upload" accept="image/*,.pdf" onchange="ufn(this)"></div></div></div><div class="fld"><label>Additional ID (Optional)</label><div class="file-box"><div class="file-box-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg></div><div class="file-box-text"><strong>Upload</strong><span class="file-box-name">Driving License or Voter ID</span></div><input type="file" name="additional_id" accept="image/*,.pdf" onchange="ufn(this)"></div></div></div><div class="actions"><button type="button" class="btn btn-ghost" onclick="prv()">← Back</button><button type="submit" class="btn btn-primary" id="subBtn"><span id="subTxt">Submit Application ✓</span><span class="spinner" id="subSpin"></span></button></div></div>
 </form>
 
 <!-- SUCCESS -->
@@ -248,10 +248,32 @@ textarea{resize:vertical;min-height:72px}
   <div class="success-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></div>
   <h2>🎉 Application Received!</h2>
   <p>Thank you for applying to the Flarize Partner Program.</p>
-  <p style="color:var(--text);font-weight:600;margin-top:8px">Our team will review your application and reach out within 24–48 hours.</p>
-  <div class="success-ref" id="refId"></div>
+  <p style="color:var(--text);font-weight:600;margin-top:8px">Our team will review and reach out within 24–48 hours.</p>
 
-  <div class="success-contact">
+  <!-- TRACKING SLIP -->
+  <div id="trackingSlip" style="margin-top:20px;background:var(--card);border:2px solid var(--border);border-radius:12px;padding:24px;text-align:left;max-width:400px;margin-left:auto;margin-right:auto">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;padding-bottom:12px;border-bottom:2px dashed var(--border)">
+      <div style="font-size:14px;font-weight:800;color:var(--brand)">⚡ FLARIZE</div>
+      <div style="font-size:10px;font-weight:600;color:var(--text-3);text-transform:uppercase;letter-spacing:1px">Tracking Slip</div>
+    </div>
+    <div style="display:grid;gap:8px;font-size:13px">
+      <div><span style="color:var(--text-3);font-weight:600">Applicant:</span> <span id="slipName" style="font-weight:700;color:var(--text)"></span></div>
+      <div><span style="color:var(--text-3);font-weight:600">Reference ID:</span> <span id="slipRef" style="font-family:monospace;font-weight:800;color:var(--brand);font-size:15px;letter-spacing:1px"></span></div>
+      <div><span style="color:var(--text-3);font-weight:600">Date:</span> <span id="slipDate" style="color:var(--text)"></span></div>
+      <div><span style="color:var(--text-3);font-weight:600">Status:</span> <span style="background:#FEF3C7;color:#D97706;padding:2px 10px;border-radius:12px;font-size:11px;font-weight:700">UNDER REVIEW</span></div>
+    </div>
+    <div style="margin-top:14px;padding-top:12px;border-top:2px dashed var(--border);font-size:11px;color:var(--text-3);text-align:center">
+      Save this slip to track your application at<br><strong style="color:var(--brand)">partner.flarize.com</strong> → Check Application Status
+    </div>
+  </div>
+
+  <!-- Download button -->
+  <button onclick="downloadSlip()" style="margin-top:14px;padding:10px 24px;background:var(--brand);color:#fff;border:none;border-radius:var(--r);font-size:13px;font-weight:700;cursor:pointer;font-family:'Manrope',sans-serif;display:inline-flex;align-items:center;gap:6px;transition:all .2s;box-shadow:0 2px 8px rgba(30,58,95,0.2)">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+    Download Tracking Slip
+  </button>
+
+  <div class="success-contact" style="margin-top:24px">
     <h3>Get in Touch</h3>
     <div class="contact-grid">
       <a href="https://wa.me/919876543210?text=Hi%20Flarize%2C%20I%20just%20submitted%20my%20partner%20application." class="contact-btn wa" target="_blank">
@@ -303,7 +325,7 @@ textarea{resize:vertical;min-height:72px}
 </div>
 
 <script>
-const GOOGLE_SCRIPT_URL='https://script.google.com/macros/s/AKfycbz62z40JzV5-5p0rdqhxUEyj8B-9CnvY0qxo6AwofrxlF1UxpsJHIyIaJNblu7KKomMBA/exec';
+const GOOGLE_SCRIPT_URL='https://script.google.com/macros/s/AKfycbyodXULxZ5PC4316pSU5380_U79_Ibh75Pyya35zZ_bh-Xs-2GUiU0pXlqP_5fKqqsI4Q/exec';
 let cur=1;const tot=5;
 
 function ufn(i){
@@ -392,7 +414,10 @@ document.getElementById('F').addEventListener('submit',async function(e){
     txt.textContent='Submitting...';
     await fetch(GOOGLE_SCRIPT_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
     this.style.display='none';
-    document.getElementById('refId').textContent=data.reference_id;
+    document.getElementById('slipName').textContent=data.full_name||'—';
+    document.getElementById('slipRef').textContent=data.reference_id;
+    document.getElementById('slipDate').textContent=new Date().toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'});
+    window._slipData={name:data.full_name||'',ref:data.reference_id,date:new Date().toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'})};
     document.getElementById('successBox').classList.add('show');
     document.querySelectorAll('.st').forEach(s=>s.classList.add('done'));
     document.querySelectorAll('.st-con .st-line').forEach(l=>l.style.background='var(--green)');
@@ -404,14 +429,16 @@ prog();
 
 /* Status checker */
 function showStatus(){
-  document.querySelector('.layout').style.display='none';
+  document.getElementById('mainLayout').style.display='none';
   document.getElementById('statusLink').style.display='none';
+  document.querySelector('.header').style.display='none';
   document.getElementById('statusChecker').style.display='block';
   window.scrollTo({top:0,behavior:'smooth'});
 }
 function hideStatus(){
-  document.querySelector('.layout').style.display='';
+  document.getElementById('mainLayout').style.display='';
   document.getElementById('statusLink').style.display='';
+  document.querySelector('.header').style.display='';
   document.getElementById('statusChecker').style.display='none';
   window.scrollTo({top:0,behavior:'smooth'});
 }
@@ -447,6 +474,63 @@ async function checkStatus(){
     res.style.display='block';res.style.background='#FEF2F2';res.style.border='1px solid #FECACA';
   }
   btn.disabled=false;txt.textContent='Check Status';spin.style.display='none';
+}
+
+/* Download tracking slip as image */
+function downloadSlip(){
+  const s=window._slipData;if(!s)return;
+  const c=document.createElement('canvas');c.width=600;c.height=380;
+  const x=c.getContext('2d');
+  /* Background */
+  x.fillStyle='#FFFFFF';x.fillRect(0,0,600,380);
+  x.strokeStyle='#1E3A5F';x.lineWidth=3;x.strokeRect(8,8,584,364);
+  /* Header */
+  x.fillStyle='#1E3A5F';x.fillRect(8,8,584,50);
+  x.fillStyle='#FFFFFF';x.font='bold 18px Manrope,sans-serif';x.fillText('⚡ FLARIZE TECHNOLOGIES',24,40);
+  x.font='11px Manrope,sans-serif';x.fillStyle='#E8A838';x.fillText('PARTNER APPLICATION TRACKING SLIP',370,40);
+  /* Dashed line */
+  x.setLineDash([6,4]);x.strokeStyle='#E2E5EA';x.lineWidth=1;
+  x.beginPath();x.moveTo(24,72);x.lineTo(576,72);x.stroke();x.setLineDash([]);
+  /* Content */
+  x.fillStyle='#9CA3AF';x.font='600 12px Manrope,sans-serif';
+  x.fillText('APPLICANT NAME',24,100);
+  x.fillStyle='#111827';x.font='bold 16px Manrope,sans-serif';
+  x.fillText(s.name,24,122);
+  
+  x.fillStyle='#9CA3AF';x.font='600 12px Manrope,sans-serif';
+  x.fillText('REFERENCE ID',24,160);
+  x.fillStyle='#1E3A5F';x.font='bold 22px monospace';
+  x.fillText(s.ref,24,186);
+  
+  x.fillStyle='#9CA3AF';x.font='600 12px Manrope,sans-serif';
+  x.fillText('SUBMISSION DATE',24,220);
+  x.fillStyle='#111827';x.font='500 14px Manrope,sans-serif';
+  x.fillText(s.date,24,240);
+  
+  x.fillStyle='#9CA3AF';x.font='600 12px Manrope,sans-serif';
+  x.fillText('STATUS',300,160);
+  x.fillStyle='#FEF3C7';x.fillRect(300,168,120,26);
+  x.fillStyle='#D97706';x.font='bold 12px Manrope,sans-serif';
+  x.fillText('UNDER REVIEW',314,186);
+  
+  /* Footer dashed line */
+  x.setLineDash([6,4]);x.strokeStyle='#E2E5EA';
+  x.beginPath();x.moveTo(24,280);x.lineTo(576,280);x.stroke();x.setLineDash([]);
+  
+  /* Footer */
+  x.fillStyle='#9CA3AF';x.font='11px Manrope,sans-serif';
+  x.textAlign='center';
+  x.fillText('Save this slip. Use your Reference ID to check status at:',300,310);
+  x.fillStyle='#1E3A5F';x.font='bold 13px Manrope,sans-serif';
+  x.fillText('partner.flarize.com → Check Application Status',300,330);
+  x.fillStyle='#9CA3AF';x.font='10px Manrope,sans-serif';
+  x.fillText('© Flarize Technologies Pvt Ltd | Kerala\'s Solar Booking Platform',300,358);
+  
+  /* Download */
+  const link=document.createElement('a');
+  link.download='Flarize_Tracking_'+s.ref+'.png';
+  link.href=c.toDataURL('image/png');
+  link.click();
 }
 
 /* Shake animation (added via JS) */
