@@ -240,8 +240,7 @@ textarea{resize:vertical;min-height:72px}
 <!-- 4 -->
 <div class="card" data-c="4"><div class="card-title">Bank Account Details</div><div class="card-sub">For commission payouts via NEFT/IMPS</div><div class="grid"><div class="row row-2"><div class="fld"><label>Account Holder Name <span class="req">*</span></label><input type="text" name="account_holder" placeholder="As per bank records" required><div class="err">Required</div></div><div class="fld"><label>Bank Name <span class="req">*</span></label><input type="text" name="bank_name" placeholder="e.g. State Bank of India" required><div class="err">Required</div></div></div><div class="row row-2"><div class="fld"><label>Account Number <span class="req">*</span></label><input type="text" name="account_number" placeholder="Enter account number" required><div class="err">Required</div></div><div class="fld"><label>IFSC Code <span class="req">*</span></label><input type="text" name="ifsc" placeholder="e.g. SBIN0001234" maxlength="11" style="text-transform:uppercase" required><div class="err">Required</div></div></div><div class="fld"><label>Branch Name</label><input type="text" name="branch" placeholder="Branch name (optional)"></div><div class="fld"><label>Cancelled Cheque / Passbook <span class="req">*</span></label><div class="file-box"><div class="file-box-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg></div><div class="file-box-text"><strong>Click to upload</strong><span class="file-box-name">PDF, JPG or PNG</span></div><input type="file" name="cancelled_cheque" accept="image/*,.pdf" required onchange="ufn(this)"></div><div class="err">Required</div></div></div><div class="actions"><button type="button" class="btn btn-ghost" onclick="prv()">← Back</button><button type="button" class="btn btn-primary" onclick="nxt()">Continue →</button></div></div>
 <!-- 5 -->
-<div class="card" data-c="5"><div class="card-title">Identity Verification</div><div class="card-sub">Upload KYC documents for compliance</div><div class="grid"><div class="row row-2"><div class="fld"><label>Aadhaar Number <span class="req">*</span></label><input type="text" name="aadhaar_number" placeholder="12-digit number" maxlength="12" pattern="[0-9]{12}" required><div class="err">Enter valid Aadhaar</div></div><div class="fld"><label>PAN Number</label><input type="text" name="pan_number" placeholder="e.g. ABCDE1234F" maxlength="10" style="text-transform:uppercase" pattern="[A-Z]{5}[0-9]{4}[A-Z]{1}"><div class="err">Enter valid PAN</div></div></div><div class="row row-2"><div class="fld"><label>Aadhaar Card (Front & Back) <span class="req">*</span></label><div class="file-box"><div class="file-box-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg></div><div class="file-box-text"><strong>Upload</strong><span class="file-box-name">Both sides</span></div><input type="file" name="aadhaar_upload" accept="image/*,.pdf" multiple required onchange="ufn(this)"></div><div class="err">Required</div></div><div class="fld"><label>PAN Card</label><div class="file-box"><div class="file-box-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg></div><div class="file-box-text"><strong>Upload</strong><span class="file-box-name">Front side (optional)</span></div><input type="file" name="pan_upload" accept="image/*,.pdf" onchange="ufn(this)"></div></div></div><div class="fld"><label>Additional ID (Optional)</label><div class="file-box"><div class="file-box-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg></div><div class="file-box-text"><strong>Upload</strong><span class="file-box-name">Driving License or Voter ID</span></div><input type="file" name="additional_id" accept="image/*,.pdf" onchange="ufn(this)"></div></div></div><div class="actions"><button type="button" class="btn btn-ghost" onclick="prv()">← Back</button><button type="submit" class="btn btn-primary" id="subBtn"><span id="subTxt">Submit Application ✓</span><span class="spinner" id="subSpin"></span></button></div></div>
-</form>
+<div class="card" data-c="5"><div class="card-title">Identity Verification</div><div class="card-sub">Upload KYC documents for compliance</div><div class="grid"><div class="row row-2"><div class="fld"><label>Aadhaar Number <span class="req">*</span></label><input type="text" name="aadhaar_number" placeholder="12-digit number" maxlength="12" pattern="[0-9]{12}" required><div class="err">Enter valid Aadhaar</div></div><div class="fld"><label>PAN Number</label><input type="text" name="pan_number" placeholder="e.g. ABCDE1234F (optional)" maxlength="10" style="text-transform:uppercase" pattern="[A-Z]{5}[0-9]{4}[A-Z]{1}"><div class="err">Enter valid PAN</div></div></div><div class="row row-2"><div class="fld"><label>Aadhaar Card (Front & Back) <span class="req">*</span></label><div class="file-box"><div class="file-box-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg></div><div class="file-box-text"><strong>Upload</strong><span class="file-box-name">Both sides</span></div><input type="file" name="aadhaar_upload" accept="image/*,.pdf" multiple required onchange="ufn(this)"></div><div class="err">Required</div></div><div class="fld"><label>PAN Card (Optional)</label><div class="file-box"><div class="file-box-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg></div><div class="file-box-text"><strong>Upload</strong><span class="file-box-name">Front side</span></div><input type="file" name="pan_upload" accept="image/*,.pdf" onchange="ufn(this)"></div></div></div><div class="fld"><label>Additional ID (Optional)</label><div class="file-box"><div class="file-box-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg></div><div class="file-box-text"><strong>Upload</strong><span class="file-box-name">Driving License or Voter ID</span></div><input type="file" name="additional_id" accept="image/*,.pdf" onchange="ufn(this)"></div></div></div><div class="actions"><button type="button" class="btn btn-ghost" onclick="prv()">← Back</button><button type="submit" class="btn btn-primary" id="subBtn"><span id="subTxt">Submit Application ✓</span><span class="spinner" id="subSpin"></span></button></div></div>
 
 <!-- SUCCESS -->
 <div class="success" id="successBox">
@@ -249,146 +248,101 @@ textarea{resize:vertical;min-height:72px}
   <h2>🎉 Application Received!</h2>
   <p>Thank you for applying to the Flarize Partner Program.</p>
   <p style="color:var(--text);font-weight:600;margin-top:8px">Our team will review and reach out within 24–48 hours.</p>
-
-  <!-- TRACKING SLIP -->
   <div id="trackingSlip" style="margin-top:20px;background:var(--card);border:2px solid var(--border);border-radius:12px;padding:24px;text-align:left;max-width:400px;margin-left:auto;margin-right:auto">
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;padding-bottom:12px;border-bottom:2px dashed var(--border)">
       <div style="font-size:14px;font-weight:800;color:var(--brand)">⚡ FLARIZE</div>
       <div style="font-size:10px;font-weight:600;color:var(--text-3);text-transform:uppercase;letter-spacing:1px">Tracking Slip</div>
     </div>
     <div style="display:grid;gap:8px;font-size:13px">
-      <div><span style="color:var(--text-3);font-weight:600">Applicant:</span> <span id="slipName" style="font-weight:700;color:var(--text)"></span></div>
+      <div><span style="color:var(--text-3);font-weight:600">Applicant:</span> <span id="slipName" style="font-weight:700"></span></div>
       <div><span style="color:var(--text-3);font-weight:600">Reference ID:</span> <span id="slipRef" style="font-family:monospace;font-weight:800;color:var(--brand);font-size:15px;letter-spacing:1px"></span></div>
-      <div><span style="color:var(--text-3);font-weight:600">Date:</span> <span id="slipDate" style="color:var(--text)"></span></div>
+      <div><span style="color:var(--text-3);font-weight:600">Date:</span> <span id="slipDate"></span></div>
       <div><span style="color:var(--text-3);font-weight:600">Status:</span> <span style="background:#FEF3C7;color:#D97706;padding:2px 10px;border-radius:12px;font-size:11px;font-weight:700">UNDER REVIEW</span></div>
     </div>
     <div style="margin-top:14px;padding-top:12px;border-top:2px dashed var(--border);font-size:11px;color:var(--text-3);text-align:center">
-      Save this slip to track your application at<br><strong style="color:var(--brand)">partner.flarize.com</strong> → Check Application Status
+      Use your Reference ID to check status at<br><strong style="color:var(--brand)">partner.flarize.com</strong> → Check Application Status
     </div>
   </div>
-
-  <!-- Download button -->
-  <button onclick="downloadSlip()" style="margin-top:14px;padding:10px 24px;background:var(--brand);color:#fff;border:none;border-radius:var(--r);font-size:13px;font-weight:700;cursor:pointer;font-family:'Manrope',sans-serif;display:inline-flex;align-items:center;gap:6px;transition:all .2s;box-shadow:0 2px 8px rgba(30,58,95,0.2)">
+  <button onclick="downloadSlip()" style="margin-top:14px;padding:10px 24px;background:var(--brand);color:#fff;border:none;border-radius:var(--r);font-size:13px;font-weight:700;cursor:pointer;font-family:'Manrope',sans-serif;display:inline-flex;align-items:center;gap:6px;box-shadow:0 2px 8px rgba(30,58,95,0.2)">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
     Download Tracking Slip
   </button>
-
   <div class="success-contact" style="margin-top:24px">
     <h3>Get in Touch</h3>
     <div class="contact-grid">
-      <a href="https://wa.me/919876543210?text=Hi%20Flarize%2C%20I%20just%20submitted%20my%20partner%20application." class="contact-btn wa" target="_blank">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        WhatsApp
-      </a>
-      <a href="tel:+919876543210" class="contact-btn ph">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-        Call Us
-      </a>
-      <a href="https://flarize.com" class="contact-btn web" target="_blank">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
-        Website
-      </a>
-      <a href="mailto:partners@flarize.com" class="contact-btn mail">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        Email
-      </a>
+      <a href="https://wa.me/919876543210?text=Hi%20Flarize%2C%20I%20just%20submitted%20my%20partner%20application." class="contact-btn wa" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> WhatsApp</a>
+      <a href="tel:+919876543210" class="contact-btn ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg> Call Us</a>
+      <a href="https://flarize.com" class="contact-btn web" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg> Website</a>
+      <a href="mailto:partners@flarize.com" class="contact-btn mail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> Email</a>
     </div>
   </div>
 </div>
+</div><!-- END mainLayout -->
 
-<!-- STATUS CHECKER (accessible via link below form) -->
-<div id="statusChecker" class="layout" style="display:none;padding-top:24px;padding-bottom:48px">
-  <div class="card active" style="display:block">
-    <div class="card-title">Check Application Status</div>
-    <div class="card-sub">Enter your reference ID to view your application status</div>
-    <div class="grid">
-      <div class="fld">
-        <label>Reference ID <span class="req">*</span></label>
-        <input type="text" id="statusRefId" placeholder="e.g. FLZ-M5X8K2P" style="text-transform:uppercase;font-family:'Manrope',monospace;letter-spacing:1px">
+<!-- STATUS CHECKER — outside mainLayout so it shows when form hides -->
+<div id="statusChecker" style="display:none;max-width:580px;margin:0 auto;padding:24px 16px 48px">
+  <div style="background:var(--card);border:1px solid var(--border);border-radius:14px;padding:28px 24px;box-shadow:0 2px 8px rgba(0,0,0,0.04);animation:cardIn .35s ease">
+    <div style="text-align:center;margin-bottom:20px">
+      <div style="width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,var(--brand),var(--brand-light));display:grid;place-items:center;margin:0 auto 12px">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
       </div>
-      <button type="button" class="btn btn-primary" onclick="checkStatus()" id="statusBtn" style="flex:none;width:100%">
+      <div style="font-size:17px;font-weight:700;color:var(--text)">Check Application Status</div>
+      <div style="font-size:12px;color:var(--text-3);margin-top:4px">Enter your reference ID from the tracking slip</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div>
+        <label style="display:block;font-size:12px;font-weight:600;color:var(--text-2);margin-bottom:4px">Reference ID <span style="color:var(--red)">*</span></label>
+        <input type="text" id="statusRefId" placeholder="e.g. FLZ-M5X8K2P" style="width:100%;padding:12px 14px;border:1px solid var(--border);border-radius:var(--r);font-size:15px;font-family:'Manrope',monospace;letter-spacing:1.5px;text-transform:uppercase;outline:none;text-align:center">
+      </div>
+      <button type="button" onclick="checkStatus()" id="statusBtn" style="width:100%;padding:12px;background:linear-gradient(135deg,var(--brand),var(--brand-light));color:#fff;border:none;border-radius:var(--r);font-size:14px;font-weight:700;cursor:pointer;font-family:'Manrope',sans-serif;display:flex;align-items:center;justify-content:center;gap:6px;box-shadow:0 2px 8px rgba(30,58,95,0.2)">
         <span id="statusBtnTxt">Check Status</span>
         <span class="spinner" id="statusSpin"></span>
       </button>
     </div>
-    <div id="statusResult" style="display:none;margin-top:20px;padding:16px;border-radius:var(--r);animation:cardIn .3s ease">
-    </div>
+    <div id="statusResult" style="display:none;margin-top:20px;padding:16px;border-radius:var(--r)"></div>
     <div style="text-align:center;margin-top:16px">
       <a href="#" onclick="hideStatus();return false" style="font-size:13px;color:var(--brand);text-decoration:none;font-weight:600">← Back to Application Form</a>
     </div>
   </div>
 </div>
 
-<!-- Status link at bottom of form -->
-<div class="layout" id="statusLink" style="text-align:center;padding:16px;padding-bottom:48px">
-  <a href="#" onclick="showStatus();return false" style="font-size:13px;color:var(--text-3);text-decoration:none;font-weight:500;transition:color .2s">Already applied? <span style="color:var(--brand);font-weight:600;text-decoration:underline">Check Application Status</span></a>
+<!-- Status link — outside mainLayout -->
+<div id="statusLink" style="text-align:center;padding:16px 16px 48px">
+  <a href="#" onclick="showStatus();return false" style="font-size:13px;color:var(--text-3);text-decoration:none;font-weight:500">Already applied? <span style="color:var(--brand);font-weight:600;text-decoration:underline">Check Application Status</span></a>
 </div>
 
 <script>
 const GOOGLE_SCRIPT_URL='https://script.google.com/macros/s/AKfycbyodXULxZ5PC4316pSU5380_U79_Ibh75Pyya35zZ_bh-Xs-2GUiU0pXlqP_5fKqqsI4Q/exec';
 let cur=1;const tot=5;
 
-function ufn(i){
-  const t=i.closest('.file-box').querySelector('.file-box-name');
-  const box=i.closest('.file-box');
-  t.textContent=i.files.length===1?i.files[0].name:i.files.length>1?i.files.length+' files selected':t.textContent;
-  if(i.files.length){box.style.borderColor='var(--green)';box.style.background='#F0FFF4'}
-}
-
-function prog(){
-  document.querySelectorAll('.st').forEach(s=>{
-    const n=+s.dataset.s;s.classList.remove('active','done');
-    if(n<cur)s.classList.add('done');else if(n===cur)s.classList.add('active');
-  });
-  document.querySelectorAll('.st-con .st-line').forEach((l,i)=>{l.style.background=i<cur-1?'var(--green)':'var(--border)'});
-}
-
-function go(n){
-  document.querySelectorAll('.card').forEach(c=>c.classList.remove('active'));
-  document.querySelector(`[data-c="${n}"]`).classList.add('active');
-  cur=n;prog();
-  window.scrollTo({top:100,behavior:'smooth'});
-}
-
-function val(){
-  const c=document.querySelector(`[data-c="${cur}"]`);let ok=true;
-  c.querySelectorAll('[required]').forEach(f=>{
-    const p=f.closest('.fld');
-    if(f.type==='radio'){if(!c.querySelector(`input[name="${f.name}"]:checked`))ok=false;return}
-    if(p)p.classList.remove('has-err');
-    if(!f.value||!f.checkValidity()){ok=false;if(p)p.classList.add('has-err')}
-  });
-  if(!ok){/* shake card */const card=document.querySelector(`[data-c="${cur}"]`);card.style.animation='none';card.offsetHeight;card.style.animation='shake .4s ease'}
-  return ok;
-}
-
+function ufn(i){const t=i.closest('.file-box').querySelector('.file-box-name');const box=i.closest('.file-box');if(i.files.length){let tooBig=false;for(const f of i.files){if(f.size>5*1024*1024)tooBig=true}if(tooBig){t.textContent='File too large! Max 5MB';box.style.borderColor='var(--red)';box.style.background='#FEF2F2';i.value='';return}t.textContent=i.files.length===1?i.files[0].name:i.files.length+' files';box.style.borderColor='var(--green)';box.style.background='#F0FFF4'}}
+function prog(){document.querySelectorAll('.st').forEach(s=>{const n=+s.dataset.s;s.classList.remove('active','done');if(n<cur)s.classList.add('done');else if(n===cur)s.classList.add('active')});document.querySelectorAll('.st-con .st-line').forEach((l,i)=>{l.style.background=i<cur-1?'var(--green)':'var(--border)'})}
+function go(n){document.querySelectorAll('.card').forEach(c=>c.classList.remove('active'));document.querySelector(`[data-c="${n}"]`).classList.add('active');cur=n;prog();window.scrollTo({top:100,behavior:'smooth'})}
+function val(){const c=document.querySelector(`[data-c="${cur}"]`);let ok=true;c.querySelectorAll('[required]').forEach(f=>{const p=f.closest('.fld');if(f.type==='radio'){if(!c.querySelector(`input[name="${f.name}"]:checked`))ok=false;return}if(p)p.classList.remove('has-err');if(!f.value||!f.checkValidity()){ok=false;if(p)p.classList.add('has-err')}});if(!ok){c.style.animation='none';c.offsetHeight;c.style.animation='shake .4s ease'}return ok}
 function nxt(){if(val()&&cur<tot)go(cur+1)}
 function prv(){if(cur>1)go(cur-1)}
 function toB64(f){return new Promise((r,j)=>{const rd=new FileReader();rd.onload=()=>r({name:f.name,type:f.type,data:rd.result.split(',')[1]});rd.onerror=j;rd.readAsDataURL(f)})}
 
-/* Confetti burst */
-function confetti(){
-  const c=document.createElement('div');c.className='confetti-container';document.body.appendChild(c);
-  const colors=['#E8A838','#1E3A5F','#059669','#DC2626','#7C3AED','#F59E0B','#10B981','#3B82F6'];
-  for(let i=0;i<60;i++){
-    const p=document.createElement('div');p.className='confetti';
-    p.style.left=Math.random()*100+'%';
-    p.style.background=colors[Math.floor(Math.random()*colors.length)];
-    p.style.width=(Math.random()*6+4)+'px';
-    p.style.height=(Math.random()*6+4)+'px';
-    p.style.animationDelay=Math.random()*1.5+'s';
-    p.style.animationDuration=(Math.random()*2+2)+'s';
-    if(Math.random()>.5)p.style.borderRadius='50%';
-    c.appendChild(p);
-  }
-  setTimeout(()=>c.remove(),5000);
+/* Compress images before upload — 3MB photo → ~150KB */
+function compressFile(f){
+  return new Promise((resolve,reject)=>{
+    if(!f.type.startsWith('image/')){return toB64(f).then(resolve).catch(reject)}
+    const img=new Image();const url=URL.createObjectURL(f);
+    img.onload=()=>{
+      URL.revokeObjectURL(url);
+      const MAX=800;let w=img.width,h=img.height;
+      if(w>MAX||h>MAX){if(w>h){h=Math.round(h*MAX/w);w=MAX}else{w=Math.round(w*MAX/h);h=MAX}}
+      const c=document.createElement('canvas');c.width=w;c.height=h;
+      c.getContext('2d').drawImage(img,0,0,w,h);
+      const dataUrl=c.toDataURL('image/jpeg',0.6);
+      resolve({name:f.name.replace(/\.[^.]+$/,'.jpg'),type:'image/jpeg',data:dataUrl.split(',')[1]});
+    };
+    img.onerror=()=>{URL.revokeObjectURL(url);toB64(f).then(resolve).catch(reject)};
+    img.src=url;
+  });
 }
 
-/* Button ripple */
-document.addEventListener('click',function(e){
-  const btn=e.target.closest('.btn-primary');
-  if(btn){const r=btn.getBoundingClientRect();btn.style.setProperty('--x',(e.clientX-r.left)+'px');btn.style.setProperty('--y',(e.clientY-r.top)+'px')}
-});
+function confetti(){const c=document.createElement('div');c.style.cssText='position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999;overflow:hidden';document.body.appendChild(c);const colors=['#E8A838','#1E3A5F','#059669','#DC2626','#7C3AED','#F59E0B','#10B981','#3B82F6'];for(let i=0;i<60;i++){const p=document.createElement('div');p.style.cssText=`position:absolute;width:${Math.random()*6+4}px;height:${Math.random()*6+4}px;background:${colors[Math.floor(Math.random()*colors.length)]};border-radius:${Math.random()>.5?'50%':'2px'};top:-10px;left:${Math.random()*100}%;animation:confettiFall ${Math.random()*2+2}s ease-in ${Math.random()*1.5}s forwards`;c.appendChild(p)}setTimeout(()=>c.remove(),5000)}
 
 document.getElementById('F').addEventListener('submit',async function(e){
   e.preventDefault();if(!val())return;
@@ -396,49 +350,46 @@ document.getElementById('F').addEventListener('submit',async function(e){
   btn.disabled=true;txt.textContent='Processing files...';spin.style.display='block';
   const fd=new FormData(this),data={};
   for(const[k,v]of fd.entries()){if(!(v instanceof File&&v.size>0))data[k]=v}
-  /* Parallel file conversion — all files at once */
-  const fileFields=['profile_photo','cancelled_cheque','aadhaar_upload','pan_upload','additional_id'];
   const filePromises=[];
-  for(const nm of fileFields){
-    const inp=this.querySelector(`[name="${nm}"]`);
-    if(inp?.files.length){
-      for(const f of inp.files){if(f.size>0)filePromises.push(toB64(f).then(r=>({field:nm,file:r})))}
-    }
-  }
+  const fileNames=[];
+  for(const nm of['profile_photo','cancelled_cheque','aadhaar_upload','pan_upload','additional_id']){const inp=this.querySelector(`[name="${nm}"]`);if(inp?.files.length){for(const f of inp.files){if(f.size>0){fileNames.push(f.name);filePromises.push(compressFile(f).then(r=>({field:nm,file:r})))}}}}
   try{
-    txt.textContent='Uploading...';
+    if(filePromises.length){txt.textContent='Compressing '+filePromises.length+' file(s)...'}
     const results=await Promise.all(filePromises);
     for(const r of results){const k=r.field+'_files';if(!data[k])data[k]=[];data[k].push(r.file)}
     data.reference_id='FLZ-'+Date.now().toString(36).toUpperCase();
     data.submitted_at=new Date().toISOString();
     txt.textContent='Submitting...';
-    await fetch(GOOGLE_SCRIPT_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
+    const payload=JSON.stringify(data);
+    const sizeMB=(payload.length/1024/1024).toFixed(1);
+    txt.textContent='Uploading ('+sizeMB+'MB)...';
+    await fetch(GOOGLE_SCRIPT_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:payload});
     this.style.display='none';
-    document.getElementById('slipName').textContent=data.full_name||'—';
+    document.getElementById('slipName').textContent=data.full_name||'';
     document.getElementById('slipRef').textContent=data.reference_id;
     document.getElementById('slipDate').textContent=new Date().toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'});
     window._slipData={name:data.full_name||'',ref:data.reference_id,date:new Date().toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'})};
     document.getElementById('successBox').classList.add('show');
     document.querySelectorAll('.st').forEach(s=>s.classList.add('done'));
     document.querySelectorAll('.st-con .st-line').forEach(l=>l.style.background='var(--green)');
+    document.getElementById('statusLink').style.display='none';
     confetti();
   }catch(err){alert('Something went wrong. Please try again.');btn.disabled=false;txt.textContent='Submit Application ✓';spin.style.display='none'}
 });
-
 prog();
 
 /* Status checker */
 function showStatus(){
   document.getElementById('mainLayout').style.display='none';
-  document.getElementById('statusLink').style.display='none';
   document.querySelector('.header').style.display='none';
+  document.getElementById('statusLink').style.display='none';
   document.getElementById('statusChecker').style.display='block';
   window.scrollTo({top:0,behavior:'smooth'});
 }
 function hideStatus(){
   document.getElementById('mainLayout').style.display='';
-  document.getElementById('statusLink').style.display='';
   document.querySelector('.header').style.display='';
+  document.getElementById('statusLink').style.display='';
   document.getElementById('statusChecker').style.display='none';
   window.scrollTo({top:0,behavior:'smooth'});
 }
@@ -452,91 +403,49 @@ async function checkStatus(){
     const d=await r.json();
     if(d.found){
       const st=d.status||'Under Review';
-      const stColor=st.toLowerCase().includes('approved')?'var(--green)':st.toLowerCase().includes('reject')?'var(--red)':'var(--accent-dark)';
-      res.innerHTML=`
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
-          <div style="width:10px;height:10px;border-radius:50%;background:${stColor};flex-shrink:0"></div>
-          <div style="font-size:15px;font-weight:700;color:var(--text)">${st}</div>
-        </div>
-        <div style="display:grid;gap:8px;font-size:13px;color:var(--text-2)">
-          <div><strong>Name:</strong> ${d.name||'—'}</div>
-          <div><strong>Reference:</strong> <span style="font-family:monospace;letter-spacing:0.5px">${refId}</span></div>
-          <div><strong>Submitted:</strong> ${d.date||'—'}</div>
-          ${d.remarks?`<div style="margin-top:4px;padding:10px;background:var(--bg);border-radius:6px;border-left:3px solid ${stColor}"><strong>Remarks:</strong> ${d.remarks}</div>`:''}
-        </div>`;
-      res.style.display='block';res.style.background='var(--bg)';res.style.border='1px solid var(--border)';
+      const stColor=st.toLowerCase().includes('approved')?'#059669':st.toLowerCase().includes('reject')?'#DC2626':'#D97706';
+      res.innerHTML=`<div style="display:flex;align-items:center;gap:10px;margin-bottom:12px"><div style="width:10px;height:10px;border-radius:50%;background:${stColor}"></div><div style="font-size:16px;font-weight:700">${st}</div></div><div style="display:grid;gap:8px;font-size:13px;color:#4B5563"><div><strong>Name:</strong> ${d.name||'—'}</div><div><strong>Reference:</strong> <span style="font-family:monospace">${refId}</span></div><div><strong>Submitted:</strong> ${d.date||'—'}</div>${d.remarks?`<div style="margin-top:4px;padding:10px;background:#F7F8FB;border-radius:6px;border-left:3px solid ${stColor}"><strong>Remarks:</strong> ${d.remarks}</div>`:''}</div>`;
+      res.style.display='block';res.style.background='#F7F8FB';res.style.border='1px solid #E2E5EA';
     }else{
-      res.innerHTML='<div style="text-align:center;color:var(--text-3);font-size:13px;padding:8px">No application found with this reference ID. Please check and try again.</div>';
+      res.innerHTML='<div style="text-align:center;color:#9CA3AF;font-size:13px;padding:8px">No application found with this reference ID.</div>';
       res.style.display='block';res.style.background='#FEF2F2';res.style.border='1px solid #FECACA';
     }
   }catch(err){
-    res.innerHTML='<div style="text-align:center;color:var(--text-3);font-size:13px;padding:8px">Unable to check status right now. Please try again later.</div>';
+    res.innerHTML='<div style="text-align:center;color:#9CA3AF;font-size:13px;padding:8px">Unable to check status. Try again later.</div>';
     res.style.display='block';res.style.background='#FEF2F2';res.style.border='1px solid #FECACA';
   }
   btn.disabled=false;txt.textContent='Check Status';spin.style.display='none';
 }
 
-/* Download tracking slip as image */
+/* Download tracking slip */
 function downloadSlip(){
   const s=window._slipData;if(!s)return;
-  const c=document.createElement('canvas');c.width=600;c.height=380;
-  const x=c.getContext('2d');
-  /* Background */
+  const c=document.createElement('canvas');c.width=600;c.height=380;const x=c.getContext('2d');
   x.fillStyle='#FFFFFF';x.fillRect(0,0,600,380);
   x.strokeStyle='#1E3A5F';x.lineWidth=3;x.strokeRect(8,8,584,364);
-  /* Header */
   x.fillStyle='#1E3A5F';x.fillRect(8,8,584,50);
-  x.fillStyle='#FFFFFF';x.font='bold 18px Manrope,sans-serif';x.fillText('⚡ FLARIZE TECHNOLOGIES',24,40);
-  x.font='11px Manrope,sans-serif';x.fillStyle='#E8A838';x.fillText('PARTNER APPLICATION TRACKING SLIP',370,40);
-  /* Dashed line */
-  x.setLineDash([6,4]);x.strokeStyle='#E2E5EA';x.lineWidth=1;
-  x.beginPath();x.moveTo(24,72);x.lineTo(576,72);x.stroke();x.setLineDash([]);
-  /* Content */
-  x.fillStyle='#9CA3AF';x.font='600 12px Manrope,sans-serif';
-  x.fillText('APPLICANT NAME',24,100);
-  x.fillStyle='#111827';x.font='bold 16px Manrope,sans-serif';
-  x.fillText(s.name,24,122);
-  
-  x.fillStyle='#9CA3AF';x.font='600 12px Manrope,sans-serif';
-  x.fillText('REFERENCE ID',24,160);
-  x.fillStyle='#1E3A5F';x.font='bold 22px monospace';
-  x.fillText(s.ref,24,186);
-  
-  x.fillStyle='#9CA3AF';x.font='600 12px Manrope,sans-serif';
-  x.fillText('SUBMISSION DATE',24,220);
-  x.fillStyle='#111827';x.font='500 14px Manrope,sans-serif';
-  x.fillText(s.date,24,240);
-  
-  x.fillStyle='#9CA3AF';x.font='600 12px Manrope,sans-serif';
-  x.fillText('STATUS',300,160);
-  x.fillStyle='#FEF3C7';x.fillRect(300,168,120,26);
-  x.fillStyle='#D97706';x.font='bold 12px Manrope,sans-serif';
-  x.fillText('UNDER REVIEW',314,186);
-  
-  /* Footer dashed line */
-  x.setLineDash([6,4]);x.strokeStyle='#E2E5EA';
-  x.beginPath();x.moveTo(24,280);x.lineTo(576,280);x.stroke();x.setLineDash([]);
-  
-  /* Footer */
-  x.fillStyle='#9CA3AF';x.font='11px Manrope,sans-serif';
-  x.textAlign='center';
-  x.fillText('Save this slip. Use your Reference ID to check status at:',300,310);
-  x.fillStyle='#1E3A5F';x.font='bold 13px Manrope,sans-serif';
-  x.fillText('partner.flarize.com → Check Application Status',300,330);
-  x.fillStyle='#9CA3AF';x.font='10px Manrope,sans-serif';
-  x.fillText('© Flarize Technologies Pvt Ltd | Kerala\'s Solar Booking Platform',300,358);
-  
-  /* Download */
-  const link=document.createElement('a');
-  link.download='Flarize_Tracking_'+s.ref+'.png';
-  link.href=c.toDataURL('image/png');
-  link.click();
+  x.fillStyle='#FFFFFF';x.font='bold 18px sans-serif';x.fillText('FLARIZE TECHNOLOGIES',24,40);
+  x.fillStyle='#E8A838';x.font='11px sans-serif';x.fillText('PARTNER APPLICATION TRACKING SLIP',360,40);
+  x.setLineDash([6,4]);x.strokeStyle='#E2E5EA';x.lineWidth=1;x.beginPath();x.moveTo(24,72);x.lineTo(576,72);x.stroke();x.setLineDash([]);
+  x.fillStyle='#9CA3AF';x.font='600 12px sans-serif';x.fillText('APPLICANT NAME',24,100);
+  x.fillStyle='#111827';x.font='bold 16px sans-serif';x.fillText(s.name,24,122);
+  x.fillStyle='#9CA3AF';x.font='600 12px sans-serif';x.fillText('REFERENCE ID',24,160);
+  x.fillStyle='#1E3A5F';x.font='bold 22px monospace';x.fillText(s.ref,24,186);
+  x.fillStyle='#9CA3AF';x.font='600 12px sans-serif';x.fillText('SUBMISSION DATE',24,220);
+  x.fillStyle='#111827';x.font='500 14px sans-serif';x.fillText(s.date,24,240);
+  x.fillStyle='#9CA3AF';x.font='600 12px sans-serif';x.fillText('STATUS',300,160);
+  x.fillStyle='#FEF3C7';x.fillRect(300,168,130,26);x.fillStyle='#D97706';x.font='bold 12px sans-serif';x.fillText('UNDER REVIEW',314,186);
+  x.setLineDash([6,4]);x.strokeStyle='#E2E5EA';x.beginPath();x.moveTo(24,280);x.lineTo(576,280);x.stroke();x.setLineDash([]);
+  x.fillStyle='#9CA3AF';x.font='11px sans-serif';x.textAlign='center';
+  x.fillText('Check status at: partner.flarize.com',300,310);
+  x.fillStyle='#9CA3AF';x.font='10px sans-serif';x.fillText('Flarize Technologies | Kerala Solar Booking Platform',300,358);
+  const link=document.createElement('a');link.download='Flarize_Tracking_'+s.ref+'.png';link.href=c.toDataURL('image/png');link.click();
 }
 
-/* Shake animation (added via JS) */
-const shakeStyle=document.createElement('style');
-shakeStyle.textContent='@keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-6px)}40%{transform:translateX(6px)}60%{transform:translateX(-4px)}80%{transform:translateX(4px)}}';
-document.head.appendChild(shakeStyle);
+/* Animations */
+const _st=document.createElement('style');
+_st.textContent='@keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-6px)}40%{transform:translateX(6px)}60%{transform:translateX(-4px)}80%{transform:translateX(4px)}}@keyframes confettiFall{0%{transform:translateY(0) rotate(0deg);opacity:1}80%{opacity:1}100%{transform:translateY(100vh) rotate(720deg);opacity:0}}';
+document.head.appendChild(_st);
 </script>
 </body>
 </html>
